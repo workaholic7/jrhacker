@@ -1,0 +1,37 @@
+{
+    "data" : [
+      {
+          "name": "Dashboard",
+          "url": "/dashboard"
+      },
+      {
+        "name": "Operation",
+        "children": [
+          {
+            "name": "Students",
+            "url": "/students"
+          },
+          {
+            "name": "Teachers",
+            "url": "/teachers"
+          },
+          {
+            "name": "Teacher slot info",
+            "url": "/teacher/slot"
+          },
+          {
+            "name": "Session",
+            "url": "/session"
+          },
+          {
+            "name": "Payslip",
+            "url": "/payslip"
+          }
+        ]
+      },
+      {
+        "name": "Logout",
+          "url": "/logout"
+      }
+    ]
+  }

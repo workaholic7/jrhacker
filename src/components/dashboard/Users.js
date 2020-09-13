@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
-import CustomButton from '../../common/CustomButton';
-import Cell from '../../common/Cell';
-import Styles from '../../common/Styles';
-import FormSelect from '../../common/FormSelect';
-import TableView from '../../common/TableView';
-import Divider from '../../common/Divider';
-import CustomModal from '../../common/CustomModal';
+import CustomButton from '../common/CustomButton';
+import Cell from '../common/Cell';
+import Styles from '../common/Styles';
+import FormSelect from '../common/FormSelect';
+import TableView from '../common/TableView';
+import Divider from '../common/Divider';
+import CustomModal from '../common/CustomModal';
 
 function Users({ buttonText }) {
     const [showAddNewMember, setShowAddNewMember] = useState(false);
@@ -43,7 +43,7 @@ function Users({ buttonText }) {
     ];
     return (
         <>
-            <Container className='dashboard-container dashboard-list'>
+            <Container fluid className='dashboard-container dashboard-list'>
                 <Row >
                     <Cell span="2" text="List of Users" style={Styles.labelLeftAlign} />
                     <FormSelect placeholder="Role" options={options} />
