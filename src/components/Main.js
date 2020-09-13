@@ -3,7 +3,7 @@ import React from 'react';
 import NotificationHeader from './navbar/NotificationHeader';
 import { Router } from "@reach/router";
 import Dashboard from '../components/dashboard/Dashboard';
-import Students from './Students';
+import Students from '../components/student/Students';
 import Teachers from './Teachers';
 import TeachersSlot from './TeachersSlot';
 import Session from './Session';

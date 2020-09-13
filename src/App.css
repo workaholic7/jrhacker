@@ -8,7 +8,7 @@
   background: #fff;
 }
 
-body{
+#root, body{
   background: #e5e5e5 !important;
 }
 
@@ -59,8 +59,10 @@ th, td{
   top: 60px;    
   position: absolute;
   left: 256px;
-  width: calc(100% - 296px);
-  margin: 0px 20px;
+  width: calc(100% - 256px);
+  padding: 0px 20px;
+  height: 100%;
+  background: #E5E5E5 !important;
 }
 
 .login-text{
@@ -79,21 +81,41 @@ th, td{
   width: 100%;
 }
 
-.submit-button{
-  background: #27AE60 !important  ;
+.modal-submit-button{
+  background: #27AE60 !important;
+}
+
+
+.action-button{
+  font-size: 14px;
+  padding: 0px;
+}
+
+.action-button:focus{
+  box-shadow: none !important;
+}
+
+.action-button:hover{
+  text-decoration: none !important;
 }
 
 .dashboard-container{
   background: #FFFFFF;
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06) !important;
   border-radius: 4px;
   margin-top:36px;
   padding-top:9px;
   height:174px;
 }
 
+.dashboard-header-row{
+  height: 46px;
+}
+
 .dashboard-list{
-  height: 600px;
+  min-height: 100px;
+  height: 100%;
+  max-height: 600px;
   overflow: scroll;
 }
 
@@ -149,12 +171,22 @@ letter-spacing: 0.01em;
 width: 385px !important;
 position: absolute !important;
 left: 50% !important;
+top: 20% !important;
 transform: translate(-50%, 0%);
 padding: 0px !important;
+height: auto !important;
 }
 .modal{
 overflow-y: hidden !important;
 max-height: 100% !important;
+}
+
+.modal-dialog{
+  margin: 0px !important;
+}
+
+.modal-content{
+  border: 0px !important;
 }
 
 .modal-header{
@@ -182,7 +214,35 @@ padding: 0px !important;
 height: 24px !important;
 }
 
+.profile-label{
+  font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 31px;
+color: #2F2D2E;
+}
+.profile-text{
+  font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 31px;
+color: #707683;
+}
+.profile-row{
+  line-height: 31px;
+}
+.profile-header-title{
+  padding-top: 6px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
 
+}
+
+.profile-header-button{
+  font-size: 10.725px;
+  font-weight: bold;
+}
 
 
 

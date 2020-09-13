@@ -29,25 +29,12 @@ export default function Menu() {
         { name: 'Logout', url: '/logout' },
       ]
         return (
-        // <Navbar className="flex-column menu" style={styles.nav}>
-        //     {/* <Nav.Link href="/"> Dashboard</Nav.Link>
-        //     <Nav onClick={toggleOperationsMenu} >Operations</Nav>
-        //         <Navbar className="flex-column" style={{display: expanded ? 'block':'none'}}>
-        //             <NavLink href="/students">Students</NavLink>
-        //             <NavLink href="/teachers">Teachers</NavLink>
-        //             <Nav.Link href="/teachers/slot">Teachers Slot Info</Nav.Link>
-        //             <Nav.Link href="/session">Session</Nav.Link>
-        //             <Nav.Link href="/payslip">Payslip</Nav.Link>
-        //         </Navbar>
-        //     <Nav.Link href="/logout">Logout</Nav.Link> */}
-            
-        // </Navbar>
         <ul>
-            {items.map(({ url, name, items:subItems, ...rest }) => (
-                <li key={name} {...rest}>
-                {Array.isArray(subItems) ? (
+            {items.map(({ url, name, items:subItems}) => {
+                
+                return (Array.isArray(subItems) ? (
                     <>
-                    {name}
+                    <li key={name} > {name}
                     <ul>
                         {subItems.map((subItem) => (
                         <li key={subItem.name}>
@@ -57,13 +44,18 @@ export default function Menu() {
                         </li>
                         ))}
                     </ul>
+                    </li>
                     </>
-                ) : 
+                ) 
+                 : 
+                <li key={name} >
                 <Link to={url}>
                 {name}
-                </Link>}
+                </Link>
                 </li>
-            ))}
+                )
+                
+            })}
         </ul>
     )
 }

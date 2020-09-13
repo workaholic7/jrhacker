@@ -7,8 +7,10 @@ import FormSelect from '../common/FormSelect';
 import TableView from '../common/TableView';
 import Divider from '../common/Divider';
 import CustomModal from '../common/CustomModal';
+import roles from '../../static/roles.json'
+import ListView from '../common/ListView';
 
-function Users({ buttonText }) {
+function UsersList({ buttonText }) {
     const [showAddNewMember, setShowAddNewMember] = useState(false);
     const [showAssignRole, setShowAssignRole] = useState(false);
     const closeAddNewMemberModal = () => setShowAddNewMember(false);
@@ -21,10 +23,7 @@ function Users({ buttonText }) {
     }
 
 
-    const options = [{ "id": "1", "name": "Super Admin" },
-    { "id": "2", "name": "Admin" },
-    { "id": "3", "name": "Agent" }
-    ];
+    
 
     const tableHeader = ["Name", "Phone", "Email", "DoB", "Dial Code", "Role"];
 
@@ -35,27 +34,62 @@ function Users({ buttonText }) {
     { "name": "email", "label": "Email", "placeholder": "Type email of user" },
     { "name": "countryCode", "label": "Country Code", "placeholder": "Enter country code" },
     { "name": "mobileNumber", "label": "Mobile Number", "placeholder": "Enter Mobile Number" },
-    { "name": "role", "label": "Role", "placeholder": "Select role of user", "type": "select", "options": options },
+    { "name": "role", "label": "Role", "placeholder": "Select role of user", "type": "select", "options": roles },
     { "name": "dob", "label": "DoB", "placeholder": "Type name of user" },
     ];
 
-    const assignRoleFields = [{ "name": "role", "label": "Role", "placeholder": "", "type": "select", "options": options }
+    const assignRoleFields = [{ "name": "role", "label": "Role", "placeholder": "", "type": "select", "options": roles }
     ];
+
+    const filterUsers = (e) =>{
+        console.log(e.target.value);
+    }
+
+    const searchUsers = (e) =>{
+        console.log(e.target.value);
+    }
+
+    const list={
+        header:[
+            {   type:"label",
+                label:"List of Users",
+                span: 2,
+                class:"profile-header-title"
+            },
+            { type:"dropdown",
+                placeholder: "Role",
+                span: 3,
+                offset: 2,
+                options: roles,
+                onChange: filterUsers,
+            },
+            { type:"input",
+                placeholder: "Search",
+                span: 3,
+                onChange: searchUsers,
+            },
+            { type:"button",
+                label:"Add new Member",
+                span: 2,
+                offset: 0,
+                onClick: showAddNewMemberModal,
+                class:"custom-button profile-header-button"
+            }
+        ],
+        table:{
+            header:[
+                "Name", "Phone", "Email", "DoB", "Dial Code", "Role"
+            ],
+            list:users,
+            action: handleActionClick,
+            actionClass: "action-button",
+        }
+        
+    }
     return (
         <>
-            <Container fluid className='dashboard-container dashboard-list'>
-                <Row >
-                    <Cell span="2" text="List of Users" style={Styles.labelLeftAlign} />
-                    <FormSelect placeholder="Role" options={options} />
-                    {/* <Cell span="2" text="User Role" style={Object.assign({}, Styles.leftAlign, Styles.bold)} /> */}
-                    <Col md={{ span: 2, offset: 6 }}>
-                        <CustomButton buttonText={buttonText} onClick={showAddNewMemberModal} classname="custom-button" textStyle={Styles.buttonText} />
-                    </Col>
-                </Row>
-                <Divider />
-
-                <TableView header={tableHeader} body={users} action={handleActionClick} />
-            </Container>
+            <ListView items={list}/>
+            
             <CustomModal name="Add New Member" show={showAddNewMember} close={closeAddNewMemberModal} modalFields={modalFields} />
             <CustomModal name="Assign Role" show={showAssignRole} close={closeAssignRoleModal} modalFields={assignRoleFields} />
         </>
@@ -63,4 +97,4 @@ function Users({ buttonText }) {
     )
 }
 
-export default Users;
+export default UsersList;

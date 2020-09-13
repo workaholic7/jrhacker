@@ -17,20 +17,17 @@ function TableView(props) {
                         {props.action ? <th></th> : <React.Fragment key={'action'}></React.Fragment>}
                         {/* {props.delete ? <th></th> : <React.Fragment key={'delete'}></React.Fragment>}
                         {props.edit ? <th></th> : <React.Fragment key={'edit'}></React.Fragment>} */}
-
-
                     </tr>
                 </thead>
                 <tbody>
                     {props.body.map((element, index) =>
                         <tr key={index} style={Object.assign({}, Styles.leftAlign)}>
-
                             {Object.keys(element).map((key, index) =>
                                 key !== 'id' ? <td style={{ fontSize: "14px" }} key={key + '_' + index}>
                                     {element[key]}
                                 </td> : <React.Fragment key={'id' + index}></React.Fragment>
                             )}
-                            {props.action ? <td><CustomButton variant="link" buttonText="Action" onClick={() => props.action(element.id)} /></td>
+                            {props.action ? <td><CustomButton variant="link" buttonText="Action" onClick={() => props.action(element.id)} className={props.actionClass} /></td>
                                 : <React.Fragment key={'download' + index}></React.Fragment>}
                             {/* {props.delete ? <td><FontAwesomeIcon icon={faTrashAlt} size="lg" onClick={() => props.delete(element.id)} /></td>
                                 : <React.Fragment key={'delete' + index}></React.Fragment>}

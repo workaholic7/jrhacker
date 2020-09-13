@@ -8,7 +8,7 @@ import FormSelect from './FormSelect';
 function CustomModal({ name, show, close, modalFields }) {
 
     return (
-        <Modal show={show} onHide={close} className="custom-modal">
+        <Modal show={show} onHide={close} className="custom-modal" >
             <Modal.Header closeButton>
                 <div className="custom-modal-title">
                     {name}
@@ -24,8 +24,8 @@ function CustomModal({ name, show, close, modalFields }) {
                     })}
                     <Row>
                         {/* //onClick={showAddNewMember} */}
-                        <CustomButton buttonText="Cancel" onClick={close} classname="custom-button" textStyle={Styles.buttonText} span="3" offset="3" />
-                        <CustomButton variant="primary" buttonText="Save" classname="custom-button submit-button" textStyle={Styles.buttonText} span="3" />
+                        <CustomButton buttonText="Cancel" onClick={close} className="custom-button" textStyle={Styles.buttonText} span="3" offset="3" />
+                        <CustomButton variant="primary" buttonText="Save" className="custom-button modal-submit-button" textStyle={Styles.buttonText} span="3" />
                     </Row>
                 </Form>
             </Modal.Body>

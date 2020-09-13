@@ -10,7 +10,7 @@ export default function FormInput({ name, placeholder, value, onChange, inputCla
                     <Form.Label style={labelStyle} className={labelClass} >{label}</Form.Label>
                 </Col>
                 : <></>}
-            <Col md={{ span: span, offset: offset }}>
+            <Col md={{ span: span || "12", offset: offset || "12" }}>
                 <Form.Control type={type || "input"}
                     name={name} placeholder={placeholder}
                     value={value} onChange={(e) => onChange(e)}
