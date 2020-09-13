@@ -1,3 +1,11 @@
+/* *{
+  font-family: Poppins !important;
+} */
+
+th, td{
+  border-top: 0px !important;
+  border-bottom: 1px solid #EBEFF2   !important;
+}
 .App {
   text-align: center;
 }
@@ -36,3 +44,120 @@
     transform: rotate(360deg);
   }
 }
+.custom-button{
+  
+  background: #5B5353 !important;
+  border-radius: 3.3px !important;
+  box-shadow: none !important;
+  border-color: #5B5353 !important;
+  float: right;
+  width: 100%;
+}
+
+.submit-button{
+  background: #27AE60 !important  ;
+}
+
+.dashboard-container{
+  background: #FFFFFF;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  margin-top:36px;
+  padding-top:9px;
+  height:174px
+}
+
+.dashboard-list{
+  height: 600px;
+  overflow: scroll;
+}
+
+.divider{
+  background: #EBEFF2;
+  transform: matrix(1, 0, 0, -1, 0, 0);
+  height:2px;
+  margin:0px !important;
+  width: 100%;
+}
+
+.custom-dropdown {
+  background-color: white !important;
+  color:  rgba(0, 0, 0, 0.6) !important;
+  border-color: white !important;
+  text-decoration: underline !important;
+  text-underline-position: under;
+}
+
+.form-group{
+  margin-bottom: 10px !important; 
+  padding: 0px 17px !important;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+}
+
+.form-select, .form-input {
+  border-width: 0 0 1px 0 !important;
+  border-color: #000000 !important;
+  border-radius: 0px !important;
+}
+
+.form-input, .custom-modal-select{
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  line-height:18px !important;
+}
+
+.form-input:focus{
+  box-shadow: none !important;
+}
+
+::placeholder{
+font-size: 12px;
+line-height: 18px;
+display: flex;
+align-items: center;
+letter-spacing: 0.01em;
+}
+
+.custom-modal{
+width: 385px !important;
+position: absolute !important;
+left: 50% !important;
+transform: translate(-50%, 0%);
+padding: 0px !important;
+}
+.modal{
+overflow-y: hidden !important;
+max-height: 100% !important;
+}
+
+.modal-header{
+border:none !important;
+}
+.custom-modal-title{
+font-weight: 500;
+font-size: 16px;
+text-align: center;
+width: 100%;
+}
+
+.custom-modal-label{
+font-weight: 500;
+font-size: 12px;  
+line-height:18px !important;
+margin-bottom: 0px !important;
+}
+
+.custom-modal-input, .custom-modal-select, .custom-modal-select>option{
+font-weight: 500;
+font-size: 12px !important;  
+margin-bottom: 0px !important;
+padding: 0px !important;
+height: 24px !important;
+}
+
+
+
+
+
