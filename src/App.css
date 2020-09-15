@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Poppins";
-  src: url(./font/Poppins-SemiBold.ttf);
+  src: url(./font/Poppins-Medium.ttf);
 }
 
 *{
@@ -80,6 +80,25 @@ th, td{
   float: right;
   width: 100%;
 }
+
+.modal-button{
+  background: #5B5353 !important;
+  border-radius: 3.3px !important;
+  box-shadow: none !important;
+  border-color: #5B5353 !important;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 10.725px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
+  width: 100%;
+  justify-content: center;
+}
+
 
 .modal-submit-button{
   background: #27AE60 !important;
@@ -197,6 +216,7 @@ font-weight: 500;
 font-size: 16px;
 text-align: center;
 width: 100%;
+justify-content: center;
 }
 
 .custom-modal-label{
@@ -215,16 +235,17 @@ height: 24px !important;
 }
 
 .profile-label{
-  font-style: normal;
+font-style: normal;
 font-weight: 500;
 font-size: 16px;
 line-height: 31px;
 color: #2F2D2E;
 }
 .profile-text{
-  font-style: normal;
+overflow-wrap: break-word;
+font-style: normal;
 font-weight: normal;
-font-size: 16px;
+font-size: 14px;
 line-height: 31px;
 color: #707683;
 }

@@ -4,7 +4,7 @@ import { Button, Col } from 'react-bootstrap';
 function CustomButton({ span, offset, buttonText, variant, textStyle, className, onClick, type }) {
     return (
         <Col md={{ span: span, offset: offset }}>
-            <Button variant={variant} type={type || "submit"} className={className} style={textStyle} onClick={onClick}>
+            <Button variant={variant} type={type} className={className} style={textStyle} onClick={onClick}>
                 {buttonText}
             </Button>
         </Col>

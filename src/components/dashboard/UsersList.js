@@ -9,89 +9,93 @@ import Divider from '../common/Divider';
 import CustomModal from '../common/CustomModal';
 import roles from '../../static/roles.json'
 import ListView from '../common/ListView';
+import AddNewMemberModal from './AddNewMemberModal';
+import AssignRoleModal from './AssignRoleModal';
+import ConfirmAssignRoleModal from './ConfirmAssignRoleModal';
 
 function UsersList({ buttonText }) {
     const [showAddNewMember, setShowAddNewMember] = useState(false);
     const [showAssignRole, setShowAssignRole] = useState(false);
+    const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
     const closeAddNewMemberModal = () => setShowAddNewMember(false);
     const showAddNewMemberModal = () => setShowAddNewMember(true);
     const closeAssignRoleModal = () => setShowAssignRole(false);
     const showAssignRoleModal = () => setShowAssignRole(true);
+    const closeConfirmationDialogModal = () => setShowConfirmationDialog(false);
+    const showConfirmationDialogModal = () => setShowConfirmationDialog(true);
 
     const handleActionClick = (id) => {
         showAssignRoleModal();
     }
 
-
-    
-
-    const tableHeader = ["Name", "Phone", "Email", "DoB", "Dial Code", "Role"];
-
+    const showConfirmationModal = () => {
+        closeAssignRoleModal();
+        showConfirmationDialogModal();
+    }
     const users = [{ "id": 1, "name": "Parul", "phone": "8375083217", "email": "paruldhoundiyal07@gmail.com", "DoB": "16/07/1991", "DialCode": "+91", "Role": "Admin" },
     { "id": 2, "name": "Anshul", "phone": "9027687148", "email": "anshulagarwal03@gmail.com", "DoB": "03/08/1991", "DialCode": "+91", "Role": "Admin" }];
 
-    const modalFields = [{ "name": "Name", "label": "Name", "placeholder": "Type name of user" },
-    { "name": "email", "label": "Email", "placeholder": "Type email of user" },
-    { "name": "countryCode", "label": "Country Code", "placeholder": "Enter country code" },
-    { "name": "mobileNumber", "label": "Mobile Number", "placeholder": "Enter Mobile Number" },
-    { "name": "role", "label": "Role", "placeholder": "Select role of user", "type": "select", "options": roles },
-    { "name": "dob", "label": "DoB", "placeholder": "Type name of user" },
-    ];
 
-    const assignRoleFields = [{ "name": "role", "label": "Role", "placeholder": "", "type": "select", "options": roles }
-    ];
 
-    const filterUsers = (e) =>{
+    const filterUsers = (e) => {
         console.log(e.target.value);
     }
 
-    const searchUsers = (e) =>{
+    const searchUsers = (e) => {
         console.log(e.target.value);
     }
 
-    const list={
-        header:[
-            {   type:"label",
-                label:"List of Users",
+    const list = {
+        header: [
+            {
+                type: "label",
+                label: "List of Users",
                 span: 2,
-                class:"profile-header-title"
+                class: "profile-header-title"
             },
-            { type:"dropdown",
+            {
+                type: "dropdown",
                 placeholder: "Role",
-                span: 3,
-                offset: 2,
+                span: 2,
+                offset: 3,
                 options: roles,
                 onChange: filterUsers,
             },
-            { type:"input",
+            {
+                type: "input",
                 placeholder: "Search",
                 span: 3,
                 onChange: searchUsers,
             },
-            { type:"button",
-                label:"Add new Member",
+            {
+                type: "button",
+                label: "Add new Member",
                 span: 2,
                 offset: 0,
                 onClick: showAddNewMemberModal,
-                class:"custom-button profile-header-button"
+                class: "custom-button profile-header-button"
             }
         ],
-        table:{
-            header:[
+        table: {
+            header: [
                 "Name", "Phone", "Email", "DoB", "Dial Code", "Role"
             ],
-            list:users,
+            list: users,
             action: handleActionClick,
             actionClass: "action-button",
         }
-        
+
     }
+
     return (
         <>
-            <ListView items={list}/>
-            
-            <CustomModal name="Add New Member" show={showAddNewMember} close={closeAddNewMemberModal} modalFields={modalFields} />
-            <CustomModal name="Assign Role" show={showAssignRole} close={closeAssignRoleModal} modalFields={assignRoleFields} />
+            <ListView items={list} />
+            <AddNewMemberModal show={showAddNewMember} close={closeAddNewMemberModal} />
+            <AssignRoleModal show={showAssignRole} close={closeAssignRoleModal} showConfirmationModal={showConfirmationModal} />
+            <ConfirmAssignRoleModal show={showConfirmationDialog} close={closeConfirmationDialogModal} />
+            {/* <CustomModal name="Add New Member" show={showAddNewMember} close={closeAddNewMemberModal} modalFields={modalFields} firstButtonText="Cancel" secondButtonText="Save" /> */}
+            {/* <CustomModal name="Assign Role" show={showAssignRole} close={closeAssignRoleModal} modalFields={assignRoleFields} firstButtonText="Cancel" secondButtonText="Save" onSubmit={showConfirmationDialogModal} />
+            <CustomModal name="Confirmation" show={showConfirmationDialog} close={closeConfirmationDialogModal} modalFields={assignRoleFields} firstButtonText="No" secondButtonText="Yes, Change role" /> */}
         </>
 
     )
