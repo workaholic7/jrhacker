@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import NotificationHeader from './navbar/NotificationHeader';
 import { Router } from "@reach/router";
@@ -11,8 +11,12 @@ import Logout from './Logout';
 import { Container } from 'react-bootstrap';
 import SideBar from '../components/navbar/SideBar';
 import Teacher from './teacher/Teacher';
+import {UserContext} from '../App'
 
 export default function Main() {
+    const { id, role } = useContext(UserContext);
+
+    
     return (
         <div style={styles.body} >
             <SideBar />

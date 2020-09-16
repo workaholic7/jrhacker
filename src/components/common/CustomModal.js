@@ -1,9 +1,9 @@
 import React from 'react';
 import { Modal, Form, Row, Col } from 'react-bootstrap';
-import FormInput from './FormInput';
+import FormInput from './form/FormInput';
 import Styles from './Styles';
 import CustomButton from './CustomButton';
-import FormSelect from './FormSelect';
+import FormSelect from './form/FormSelect';
 import DoB from './DoB';
 
 function CustomModal({ items, children }) {

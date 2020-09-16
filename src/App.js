@@ -6,13 +6,14 @@ import Main from './components/Main';
 import Login from './components/login/Login';
 import ForgotPassword from './components/login/ForgotPassword';
 
+export const UserContext = React.createContext();
+
 function App() {
   const [loggedIn, isLoggedIn] = useState(false);
 
   return (
-    <>
 
-
+    <UserContext.Provider value={{id:10, role:""}}> 
       <Main />
       {/* <Router>
         <Row>
@@ -39,7 +40,7 @@ function App() {
           </Col>
         </Row>
       </Router> */}
-    </>
+    </UserContext.Provider>
   );
 }
 

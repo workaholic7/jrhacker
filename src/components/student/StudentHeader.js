@@ -15,14 +15,17 @@ export default function StudentHeader() {
             {   type:"input",
                 placeholder: "Email",
                 span: 2,
+                class: "header-search-input"
             },
             {   type:"input",
                 placeholder: "Mobile",
                 span: 2,
+                class: "header-search-input"
             },
             {   type:"input",
                 placeholder: "Parents Name",
                 span: 2,
+                class: "header-search-input"
             },
             {   type:"dropdown",
                 placeholder: "Type",
@@ -39,7 +42,7 @@ export default function StudentHeader() {
             {   type:"input",
                 placeholder:"Course",
                 span: 2,
-                offset: 0,
+                class: "header-search-input"
             },
 
         ]

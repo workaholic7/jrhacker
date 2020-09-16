@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Col, Row } from 'react-bootstrap';
+import FormControlInput from './FormControlInput';
 
 export default function FormInput({ name, placeholder, value, onChange, inputClass, required,
     span, offset, label, labelSpan, labelOffset, labelStyle, labelClass, disabled, hidden, type }) {
@@ -10,13 +11,10 @@ export default function FormInput({ name, placeholder, value, onChange, inputCla
                     <Form.Label style={labelStyle} className={labelClass} >{label}</Form.Label>
                 </Col>
                 : <></>}
-            <Col md={{ span: span || "12", offset: offset || "12" }}>
-                <Form.Control type={type || "input"}
-                    name={name} placeholder={placeholder}
-                    value={value} onChange={(e) => onChange(e)}
-                    required={required} disabled={disabled} className={"form-input " + inputClass}
-                    style={{ 'display': hidden ? 'none' : 'inline' }} />
-            </Col>
+                <FormControlInput span={span} offset={offset} name={name} placeholder={placeholder}
+                    value={value} onChange={onChange}
+                    required={required} disabled={disabled} className={inputClass}
+                    hidden={hidden} />
         </Form.Group>
     )
 }

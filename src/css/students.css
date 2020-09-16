@@ -1,9 +1,14 @@
 .student-search-section{
     /* background: #E5E5E5; */
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06) !important;
+  box-shadow: none;
+  background: #E5E5E5 !important;
   border-radius: 4px;
   margin-top:36px;
   padding-top:9px;
+}
+
+.student-search-section>.row,.student-search-section [class*='col-'],.student-search-section [class*='form-'] {
+background: #E5E5E5 !important;
 }
 
 

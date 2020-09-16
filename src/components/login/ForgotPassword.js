@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Container, Row, Col, Button, Form} from 'react-bootstrap'
 import LoginHeader from './LoginHeader'
-import FormInput from '../common/FormInput'
+import FormInput from '../common/form/FormInput'
 
 export default function ForgotPassword() {
 

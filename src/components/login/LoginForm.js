@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Container,Row, Col, ButtonGroup, Button, Form } from 'react-bootstrap'
 import '../../css/login.css'
-import FormInput from '../common/FormInput'
+import FormInput from '../common/form/FormInput'
 
 export default function LoginForm() {
     const [formData, setFormData] = useState({"email":"", "password": ""});
