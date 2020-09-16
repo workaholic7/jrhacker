@@ -4,6 +4,7 @@ import FormInput from './FormInput';
 import Styles from './Styles';
 import CustomButton from './CustomButton';
 import FormSelect from './FormSelect';
+import DoB from './DoB';
 
 function CustomModal({ items, children }) {
 
@@ -31,13 +32,13 @@ function CustomModal({ items, children }) {
                                 </Col>
                             </Row>);
                         } else if (type === "dob") {
-                            return <FormSelect placeholder={element.placeholder} options={element.options} name={element.name} label={element.label} span={element.span} labelSpan={element.labelSpan} labelClass="custom-modal-label" selectClass="custom-modal-select" />;
+                            return <DoB />;
                         } else {
                             return <></>;
                         }
 
                     })}
-                    <Row>
+                    <Row style={{ "marginTop": "20px" }}>
                         {items.buttons && items.buttons.map((button, index) => {
                             return <CustomButton buttonText={button.label} onClick={button.onClick} className={button.class} span={button.span} offset={button.offset} />
                         })}

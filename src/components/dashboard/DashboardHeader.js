@@ -5,6 +5,7 @@ export default function DashboardHeader() {
     const items = {
         class: "dashboard-container",
         rowClass: "dashboard-header-row",
+        divider: true,
         header: [
             {
                 type: "label",

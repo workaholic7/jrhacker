@@ -11,7 +11,7 @@ export default function FormSelect({ label, options, placeholder, onChange, sele
     return (
         <>
             {options &&
-                <Form.Group as={Row} controlId="exampleForm.ControlSelect1">
+                <Form.Group as={Row}>
                     {label ?
                         <Col md={{ span: labelSpan, offset: labelOffset }}>
                             <Form.Label style={labelStyle} className={labelClass}>{label}</Form.Label>

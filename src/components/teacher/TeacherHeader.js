@@ -1,31 +1,58 @@
 import React from 'react';
-import { Col, Row, Container } from 'react-bootstrap';
-import CustomButton from '../../common/CustomButton';
-import Cell from '../../common/Cell';
-import Styles from '../../common/Styles';
-import Divider from '../../common/Divider';
-import { CONSTANTS } from '../../Constants';
-function TeacherHeader({ buttonText }) {
-    const LINEHEIGHT = '31px';
+import courses from '../../static/courses.json'
+import Header from '../common/Header';
+
+export default function TeacherHeader() {
+    const items = {
+        class: "dashboard-container",
+        rowClass: "dashboard-header-row",
+        divider: false,
+        header: [
+            {
+                type: "input",
+                placeholder: "Name",
+                span: 2,
+                class: "profile-header-title"
+            },
+            {
+                type: "input",
+                placeholder: "Email",
+                span: 2,
+                class: "profile-header-title"
+            },
+            {
+                type: "input",
+                placeholder: "Mobile",
+                span: 2,
+                class: "profile-header-title"
+            },
+            {
+                type: "select",
+                label: "Course",
+                placeholder: "Course",
+                span: 3,
+                offset: 0,
+                options: courses,
+            },
+            {
+                type: "button",
+                label: "Search",
+                span: 2,
+                offset: 3,
+                class: "custom-button profile-header-button"
+            },
+            {
+                type: "button",
+                label: "Add Teacher",
+                span: 2,
+                offset: 2,
+                class: "custom-button profile-header-button"
+            }
+        ]
+
+    }
+
     return (
-        <Container className='dashboard-container'>
-
-            <Row style={{ lineHeight: LINEHEIGHT }}>
-                <FormInput name="name" key="name" placeholder="Name" required
-                    span="2" offset="1" labelClass="custom-modal-label" inputClass="custom-modal-input" />
-
-                {/* <FormInput name={element.name} key={element.name + index} label={element.label} placeholder={element.placeholder} required
-                    span="12" labelSpan="12" labelClass="custom-modal-label" inputClass="custom-modal-input" /> */}
-
-            </Row>
-
-            <Row style={{ lineHeight: LINEHEIGHT }}>
-                <Cell span="2" text="Dial Code" style={Object.assign({}, Styles.labelLeftAlign)} />
-                <Cell span="2" text="+91" style={Styles.leftAlign} />
-            </Row>
-        </Container >
-
+        <Header items={items} />
     )
 }
-
-export default TeacherHeader;

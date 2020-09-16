@@ -1,7 +1,5 @@
-import React from 'react'
-import { propTypes } from 'react-bootstrap/esm/Image';
-import roles from '../../static/roles.json'
-import CustomModal from '../common/CustomModal';
+import React from 'react';
+import CustomModal from '../../common/CustomModal';
 
 function ConfirmAssignRoleModal(props) {
 
@@ -17,7 +15,7 @@ function ConfirmAssignRoleModal(props) {
             type: "label",
             label: "Are you sure you want to change the role of the member",
             span: "12",
-            class: "custom-modal-title"
+            class: "custom-modal-label"
         }],
         buttons: [
             {

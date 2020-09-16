@@ -1,37 +1,9 @@
-import React, { useState } from 'react';
-import { Col, Row, Container } from 'react-bootstrap';
-import CustomButton from '../common/CustomButton';
-import Cell from '../common/Cell';
-import Styles from '../common/Styles';
-import FormSelect from '../common/FormSelect';
-import TableView from '../common/TableView';
-import Divider from '../common/Divider';
-import CustomModal from '../common/CustomModal';
+import React from 'react';
 import roles from '../../static/roles.json'
 import ListView from '../common/ListView';
-import AddNewMemberModal from './AddNewMemberModal';
-import AssignRoleModal from './AssignRoleModal';
-import ConfirmAssignRoleModal from './ConfirmAssignRoleModal';
 
-function UsersList({ buttonText }) {
-    const [showAddNewMember, setShowAddNewMember] = useState(false);
-    const [showAssignRole, setShowAssignRole] = useState(false);
-    const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
-    const closeAddNewMemberModal = () => setShowAddNewMember(false);
-    const showAddNewMemberModal = () => setShowAddNewMember(true);
-    const closeAssignRoleModal = () => setShowAssignRole(false);
-    const showAssignRoleModal = () => setShowAssignRole(true);
-    const closeConfirmationDialogModal = () => setShowConfirmationDialog(false);
-    const showConfirmationDialogModal = () => setShowConfirmationDialog(true);
+function UsersList(props) {
 
-    const handleActionClick = (id) => {
-        showAssignRoleModal();
-    }
-
-    const showConfirmationModal = () => {
-        closeAssignRoleModal();
-        showConfirmationDialogModal();
-    }
     const users = [{ "id": 1, "name": "Parul", "phone": "8375083217", "email": "paruldhoundiyal07@gmail.com", "DoB": "16/07/1991", "DialCode": "+91", "Role": "Admin" },
     { "id": 2, "name": "Anshul", "phone": "9027687148", "email": "anshulagarwal03@gmail.com", "DoB": "03/08/1991", "DialCode": "+91", "Role": "Admin" }];
 
@@ -72,7 +44,7 @@ function UsersList({ buttonText }) {
                 label: "Add new Member",
                 span: 2,
                 offset: 0,
-                onClick: showAddNewMemberModal,
+                onClick: props.showAddNewMemberModal,
                 class: "custom-button profile-header-button"
             }
         ],
@@ -81,22 +53,14 @@ function UsersList({ buttonText }) {
                 "Name", "Phone", "Email", "DoB", "Dial Code", "Role"
             ],
             list: users,
-            action: handleActionClick,
+            action: props.handleActionClick,
             actionClass: "action-button",
         }
 
     }
 
     return (
-        <>
-            <ListView items={list} />
-            <AddNewMemberModal show={showAddNewMember} close={closeAddNewMemberModal} />
-            <AssignRoleModal show={showAssignRole} close={closeAssignRoleModal} showConfirmationModal={showConfirmationModal} />
-            <ConfirmAssignRoleModal show={showConfirmationDialog} close={closeConfirmationDialogModal} />
-            {/* <CustomModal name="Add New Member" show={showAddNewMember} close={closeAddNewMemberModal} modalFields={modalFields} firstButtonText="Cancel" secondButtonText="Save" /> */}
-            {/* <CustomModal name="Assign Role" show={showAssignRole} close={closeAssignRoleModal} modalFields={assignRoleFields} firstButtonText="Cancel" secondButtonText="Save" onSubmit={showConfirmationDialogModal} />
-            <CustomModal name="Confirmation" show={showConfirmationDialog} close={closeConfirmationDialogModal} modalFields={assignRoleFields} firstButtonText="No" secondButtonText="Yes, Change role" /> */}
-        </>
+        <ListView items={list} />
 
     )
 }

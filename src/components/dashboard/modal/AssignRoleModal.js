@@ -1,7 +1,6 @@
 import React from 'react'
-import { propTypes } from 'react-bootstrap/esm/Image';
-import roles from '../../static/roles.json'
-import CustomModal from '../common/CustomModal';
+import roles from '../../../static/roles.json'
+import CustomModal from '../../common/CustomModal';
 
 function AssignRoleModal(props) {
 

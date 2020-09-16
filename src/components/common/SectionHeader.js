@@ -14,7 +14,7 @@ export default function SectionHeader({ prop }) {
         return (
             <CustomButton span={prop.span} offset={prop.offset} buttonText={prop.label} className={prop.class} onClick={prop.onClick} />
         );
-    } else if (prop.type === 'dropdown') {
+    } else if (prop.type === 'select') {
         return (<Col md={{ span: prop.span, offset: prop.offset }}>
             <FormSelect placeholder={prop.placeholder} options={prop.options} onChange={prop.onChange} />
         </Col>);
