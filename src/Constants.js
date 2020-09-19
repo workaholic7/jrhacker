@@ -5,15 +5,15 @@ export const CONSTANTS = {
 
 }
 
-export const BASE_URL="http://ocalhost:8080";
+export const BASE_URL = "http://15.206.106.35/";
 
-export const REST_API={
-    GET_USER_BY_ID:{
-        url:"/user/{id}",
+export const REST_API = {
+    GET_USER_BY_ID: {
+        url: "user/{id}",
         method: "GET"
     },
-    GET_USERS_LIST:{
-        url:"/user",
-        method:"GET"
+    GET_USERS_LIST: {
+        url: "user",
+        method: "GET"
     }
 }

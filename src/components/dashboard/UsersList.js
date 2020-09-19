@@ -1,26 +1,29 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import roles from '../../static/roles.json'
 import ListView from '../common/ListView';
-import {REST_API, BASE_URL} from '../../Constants';
+import { REST_API, BASE_URL } from '../../Constants';
 
 function UsersList(props) {
 
-    const[users, setUsers] = useState([]);
+    const [users, setUsers] = useState([]);
 
-    const getUsers = () =>{
-        var API =  REST_API.GET_USERS_LIST;
-        fetch(BASE_URL+API.url)
-        .then(res=>res.json())
-        .then(
-            (res)=>{
-                console.log(res);
-                const usersList = [{ "id": 1, "name": "Parul", "mobile": "8375083217", "email": "paruldhoundiyal07@gmail.com", "Dob": "16/07/1991", "DialCode": "+91", "Role": "Admin" },
-                { "id": 2, "name": "Anshul", "phone": "9027687148", "email": "anshulagarwal03@gmail.com", "DoB": "03/08/1991", "DialCode": "+91", "Role": "Admin" }];
-                setUsers(usersList)},
-            (error)=>{console.log(error);
-                const usersList = [{ "id": 1, "name": "Parul", "phone": "8375083217", "email": "paruldhoundiyal07@gmail.com", "DoB": "16/07/1991", "DialCode": "+91", "Role": "Admin" },
-                { "id": 2, "name": "Anshul", "phone": "9027687148", "email": "anshulagarwal03@gmail.com", "DoB": "03/08/1991", "DialCode": "+91", "Role": "Admin" }];
-                setUsers(usersList);});
+    const getUsers = () => {
+        var API = REST_API.GET_USERS_LIST;
+        fetch(BASE_URL + API.url)
+            .then(res => res.json())
+            .then(
+                (res) => {
+                    console.log(res);
+                    const usersList = [{ "id": 1, "name": "Parul", "mobile": "8375083217", "email": "paruldhoundiyal07@gmail.com", "Dob": "16/07/1991", "DialCode": "+91", "Role": "Admin" },
+                    { "id": 2, "name": "Anshul", "phone": "9027687148", "email": "anshulagarwal03@gmail.com", "DoB": "03/08/1991", "DialCode": "+91", "Role": "Admin" }];
+                    setUsers(usersList)
+                },
+                (error) => {
+                    console.log(error);
+                    const usersList = [{ "id": 1, "name": "Parul", "phone": "8375083217", "email": "paruldhoundiyal07@gmail.com", "DoB": "16/07/1991", "DialCode": "+91", "Role": "Admin" },
+                    { "id": 2, "name": "Anshul", "phone": "9027687148", "email": "anshulagarwal03@gmail.com", "DoB": "03/08/1991", "DialCode": "+91", "Role": "Admin" }];
+                    setUsers(usersList);
+                });
     }
     useEffect(() => {
         getUsers();
@@ -28,19 +31,22 @@ function UsersList(props) {
 
 
     const filterUsers = (e) => {
-        var API =  REST_API.GET_USERS_LIST;
-        fetch(BASE_URL+API.url+"?id="+"1")
-        .then(res=>res.json())
-        .then(
-            (res)=>{
-                console.log(res);
-                const usersList = [{ "id": 1, "name": "Parul", "mobile": "8375083217", "email": "paruldhoundiyal07@gmail.com", "Dob": "16/07/1991", "DialCode": "+91", "Role": "Admin" },
-                { "id": 2, "name": "Anshul", "phone": "9027687148", "email": "anshulagarwal03@gmail.com", "DoB": "03/08/1991", "DialCode": "+91", "Role": "Admin" }];
-                setUsers(usersList)},
-            (error)=>{console.log(error);
-                const usersList = [{ "id": 1, "name": "Parul", "phone": "8375083217", "email": "paruldhoundiyal07@gmail.com", "DoB": "16/07/1991", "DialCode": "+91", "Role": "Admin" },
-                { "id": 2, "name": "Anshul", "phone": "9027687148", "email": "anshulagarwal03@gmail.com", "DoB": "03/08/1991", "DialCode": "+91", "Role": "Admin" }];
-                setUsers(usersList);});
+        var API = REST_API.GET_USERS_LIST;
+        fetch(BASE_URL + API.url + "?id=" + "1")
+            .then(res => res.json())
+            .then(
+                (res) => {
+                    console.log(res);
+                    const usersList = [{ "id": 1, "name": "Parul", "mobile": "8375083217", "email": "paruldhoundiyal07@gmail.com", "Dob": "16/07/1991", "DialCode": "+91", "Role": "Admin" },
+                    { "id": 2, "name": "Anshul", "phone": "9027687148", "email": "anshulagarwal03@gmail.com", "DoB": "03/08/1991", "DialCode": "+91", "Role": "Admin" }];
+                    setUsers(usersList)
+                },
+                (error) => {
+                    console.log(error);
+                    const usersList = [{ "id": 1, "name": "Parul", "phone": "8375083217", "email": "paruldhoundiyal07@gmail.com", "DoB": "16/07/1991", "DialCode": "+91", "Role": "Admin" },
+                    { "id": 2, "name": "Anshul", "phone": "9027687148", "email": "anshulagarwal03@gmail.com", "DoB": "03/08/1991", "DialCode": "+91", "Role": "Admin" }];
+                    setUsers(usersList);
+                });
     }
 
     const searchUsers = (e) => {
@@ -62,7 +68,7 @@ function UsersList(props) {
                 offset: 3,
                 options: roles,
                 onChange: filterUsers,
-                className:"header-select"
+                className: "header-select"
             },
             {
                 type: "input",
@@ -79,10 +85,12 @@ function UsersList(props) {
                 class: "custom-button profile-header-button"
             }
         ],
+        divider: true,
         table: {
             header: [
                 "Name", "Phone", "Email", "DoB", "Dial Code", "Role"
             ],
+            linkName: "Action",
             list: users,
             action: props.handleActionClick,
             actionClass: "action-button",

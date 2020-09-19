@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import AddNewMemberModal from './modal/AddNewMemberModal';
-import AssignRoleModal from './modal/AssignRoleModal';
-import ConfirmAssignRoleModal from './modal/ConfirmAssignRoleModal';
-import UsersList from './UsersList';
+import TeachersList from './TeacherList';
+import AddNewTeacherModal from './modal/AddNewTeacherModal';
 
 function Teachers() {
-
-
+    const handleDetailClick = () => {
+        console.log("Detail button clicked")
+    }
     return (
         <>
-            <UsersList handleActionClick={handleActionClick} showAddNewMemberModal={showAddNewMemberModal} />
+            <TeachersList handleDetailClick={handleDetailClick} />
+
         </>
 
     )

@@ -5,24 +5,35 @@ import Divider from './Divider';
 import SectionHeader from './SectionHeader';
 function Header({ items }) {
     return (
-        <Container fluid  key={items.class} className={items.class}>
+        <Container fluid key={items.class} className={items.class}>
             {Object.keys(items).map((key, index) => {
                 var data = items[key];
                 if (key === "header") {
                     return (
-                            <Row key={key+'-'+index} className={items.rowClass}>
+                        data.map((row) => {
+                            return (
+                                <>
+                                    <Row className={items.rowClass}>
 
-                                {Object.keys(data).map((type, index) => {
-                                    return <SectionHeader key={type+'-'+index} type={type} prop={data[type]} />
-                                })}
-                            </Row>);
+                                        {Object.keys(row).map((type) => {
+                                            return <SectionHeader type={type} prop={row[type]} />
+                                        })}
+                                    </Row>
+                                </>);
+                        })
+                    );
+
+
+                } else if (key === 'divider') {
+                    { return items.divider ? <Divider /> : <> </> }
+
                 } else if (key === "rows") {
                     return (Array.isArray(data) ?
                         data.map((rows) => {
                             return (
                                 <Row className="profile-row">
                                     {rows.row.map((col, index) => {
-                                        return <Cell key={col+'-'+index} span={col.span} text={col.text} className={col.class} />
+                                        return <Cell key={col + '-' + index} span={col.span} text={col.text} className={col.class} />
                                     })}
                                 </Row>
                             )

@@ -5,6 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 import Main from './components/Main';
 import Login from './components/login/Login';
 import ForgotPassword from './components/login/ForgotPassword';
+import UserProvider from './components/UserProvider';
 
 export const UserContext = React.createContext();
 
@@ -12,9 +13,8 @@ function App() {
   const [loggedIn, isLoggedIn] = useState(false);
 
   return (
-
-    <UserContext.Provider value={{id:10, role:""}}> 
-      <Main className="main"/>
+    <UserProvider>
+      <Main />
       {/* <Router>
         <Row>
           {loggedIn ?
@@ -40,7 +40,7 @@ function App() {
           </Col>
         </Row>
       </Router> */}
-    </UserContext.Provider>
+    </UserProvider>
   );
 }
 
