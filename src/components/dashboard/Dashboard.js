@@ -1,14 +1,20 @@
 import React from 'react';
 import Users from './Users';
-import DashboardHeader from './DashboardHeader';
+import { Suspense} from 'react';
+const DashboardHeader = React.lazy(() => import('./DashboardHeader'));
 
 function Dashboard() {
 
 
     return (
-        <>
-            <DashboardHeader />
-            <Users />
+        <>  
+        <Suspense fallback={<div>Loading...</div>}>
+        <DashboardHeader />
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+        <Users />
+        </Suspense>
+            
         </>
     )
 }

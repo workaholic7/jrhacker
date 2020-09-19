@@ -26,10 +26,6 @@ export default function DashboardHeader() {
                         user.role = getUserRole(user.role);
                         setUser(user)
                     }
-                    // var user = {
-                    //     "name": "Parul Sharma", "email": "paruldhoundiyal07@Gmail.com",
-                    //     dialCode: " +91", mobile: "8375083217", role: "Super Admin"
-                    // };
                 },
                 (error) => {
                     console.log(error);
@@ -47,6 +43,7 @@ export default function DashboardHeader() {
     const items = {
         class: "dashboard-container",
         rowClass: "dashboard-header-row",
+        key: "OperationDashboard",
         header: [
             [
                 {

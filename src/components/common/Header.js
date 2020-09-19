@@ -5,7 +5,7 @@ import Divider from './Divider';
 import SectionHeader from './SectionHeader';
 function Header({ items }) {
     return (
-        <Container fluid key={items.class} className={items.class}>
+        <Container fluid key={items.key} className={items.class}>
             {Object.keys(items).map((key, index) => {
                 var data = items[key];
                 if (key === "header") {
@@ -15,8 +15,8 @@ function Header({ items }) {
                                 <>
                                     <Row className={items.rowClass}>
 
-                                        {Object.keys(row).map((type) => {
-                                            return <SectionHeader type={type} prop={row[type]} />
+                                        {Object.keys(row).map((type, index) => {
+                                            return <SectionHeader key={key+"-"+index} type={type} prop={row[type]} />
                                         })}
                                     </Row>
                                 </>);
@@ -25,7 +25,7 @@ function Header({ items }) {
 
 
                 } else if (key === 'divider') {
-                    { return items.divider ? <Divider /> : <> </> }
+                    return <Divider />;
 
                 } else if (key === "rows") {
                     return (Array.isArray(data) ?
@@ -41,7 +41,7 @@ function Header({ items }) {
                         : <React.Fragment key={data}></React.Fragment>)
                 }
                 else {
-                    return null;
+                    return <></>;
                 }
             })}
 

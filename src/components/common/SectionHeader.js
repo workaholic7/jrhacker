@@ -16,6 +16,6 @@ export default function SectionHeader({ prop }) {
     } else if (prop.type === 'input') {
         return (<FormControlInput {...prop} />);
     } else {
-        return null;
+        return <React.Fragment key={prop.name}></React.Fragment>;
     }
 }

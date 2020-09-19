@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import { propTypes } from 'react-bootstrap/esm/Image';
+import React, { useState } from 'react'
 import roles from '../../../static/roles.json'
 import CustomModal from '../../common/CustomModal';
+import { REST_API, BASE_URL } from '../../../Constants';
 
 function AddNewMemberModal(props) {
-
-    
     const [formData, setFormData] = useState({});
     const [errors, setErrors] = useState({});
-
+    const [success, isSuccess] = useState(true);
+    const [message, setMessage] = useState('');
     
-
     const handleChange = (event) =>{
         event.preventDefault();
         const {name, value} = event.target;
@@ -41,16 +39,39 @@ function AddNewMemberModal(props) {
         console.log("sda");
         setErrors(error);
         setFormData(formData, formData[name]=value);
-
     }
 
-    const handleSubmit = () =>{
-
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        let API = REST_API.CREATE_USER;
+        var url = BASE_URL + API.url;
+        fetch(url, { method: API.method,headers: {
+            'Content-Type': 'application/json',
+            body: JSON.stringify(formData)
+        }})
+            .then(
+                res => {return res.json()})
+            .then(
+                (res) => {
+                    console.log(res);
+                    if(res.status){
+                        isSuccess(true);
+                        setMessage(res.response);
+                    } else{
+                        isSuccess(true);
+                        setMessage(res.response);
+                    }
+                },
+                (error) => {
+                    console.log(error);
+                    isSuccess(true);
+                    setMessage("Some error occurred. Please try again");
+                });
     }
     const modalFields = [{ name: "name", label: "Name", placeholder: "Type name of user", type: "input" },
     { name: "email", label: "Email", placeholder: "Type email of user", type: "input" },
     { name: "countryCode", label: "Country Code", placeholder: "Enter country code", type: "input" },
-    { name: "mobileNumber", label: "Mobile Number", placeholder: "Enter Mobile Number", type: "input" },
+    { name: "mobile", label: "Mobile Number", placeholder: "Enter Mobile Number", type: "input" },
     { name: "role", label: "Role", labelSpan: 12, span: 12, placeholder: "Select role of user", type: "select", options: roles },
     { name: "dob", label: "DoB", placeholder: "Type name of user", type: "dob" },
     ];
@@ -62,7 +83,7 @@ function AddNewMemberModal(props) {
         fields: modalFields,
         onChange: handleChange,
         onSubmit: handleSubmit,
-        formData:formData,
+        formData: formData,
         errors: errors,
         buttons: [
             {
@@ -74,19 +95,15 @@ function AddNewMemberModal(props) {
             },
             {
                 label: "Save",
+                type: "submit",
                 span: 3,
                 class: "modal-button modal-submit-button"
             }
         ]
-
-    }
-
-    useEffect(()=>{
-        console.log("fsfsfs")
-    },[errors, formData]);
+    };
 
     return (
-        <CustomModal items={fields} errors={errors}/>
+        <CustomModal items={fields}/>
     );
 }
 

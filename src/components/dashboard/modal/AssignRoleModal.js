@@ -21,6 +21,7 @@ function AssignRoleModal(props) {
         label: "Assign Role",
         class: "custom-modal-title",
         fields: assignRoleFields,
+        onChange: props.onChange,
         buttons: [
             {
                 label: "Cancel",

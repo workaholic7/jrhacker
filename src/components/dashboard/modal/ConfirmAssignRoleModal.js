@@ -11,6 +11,7 @@ function ConfirmAssignRoleModal(props) {
         close: props.close,
         label: "Confirmation",
         class: "custom-modal-title",
+        onSubmit: props.onSubmit,
         fields: [{
             type: "label",
             label: "Are you sure you want to change the role of the member",
@@ -27,6 +28,7 @@ function ConfirmAssignRoleModal(props) {
             },
             {
                 label: "Yes, Change role",
+                type: "submit",
                 span: 6,
                 class: "modal-button modal-submit-button"
             }
