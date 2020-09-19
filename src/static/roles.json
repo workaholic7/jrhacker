@@ -1,4 +1,14 @@
-[{ "id": "1", "name": "Super Admin" },
-    { "id": "2", "name": "Admin" },
-    { "id": "3", "name": "Agent" }
-    ]
+[
+    {
+        "id": 0,
+        "name": "Super Admin"
+    },
+    {
+        "id": 1,
+        "name": "Admin"
+    },
+    {
+        "id": 2,
+        "name": "Agent"
+    }
+]

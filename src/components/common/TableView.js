@@ -2,6 +2,7 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import Styles from './Styles';
 import CustomButton from './CustomButton';
+import Paging from './Paging';
 
 function TableView(props) {
     return (
@@ -29,6 +30,7 @@ function TableView(props) {
                     )}
                 </tbody>
             </Table>
+
         </div >
     )
 }

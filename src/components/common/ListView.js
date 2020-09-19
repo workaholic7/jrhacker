@@ -3,6 +3,7 @@ import { Row, Container } from 'react-bootstrap';
 import TableView from '../common/TableView';
 import Divider from '../common/Divider';
 import SectionHeader from './SectionHeader';
+import Paging from './Paging';
 
 export default function ListView({ items }) {
     return (
@@ -22,6 +23,8 @@ export default function ListView({ items }) {
                     return <TableView key={key + '-' + index} header={data.header} body={data.list} action={data.action} actionClass={data.actionClass} linkName="Action" />
                 } else if (key === "divider") {
                     return <Divider />
+                } else if (key === "paging") {
+                    return <Paging pages={data.totalPages} onPageClick={data.handlePagination} currentPage={data.activePage} />
                 } else {
                     return <></>;
                 }

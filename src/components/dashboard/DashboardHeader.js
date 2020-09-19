@@ -1,23 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../common/Header'
 import { REST_API, BASE_URL } from '../../Constants';
-
+import { getUserRole } from '../Util'
 export default function DashboardHeader() {
 
     const [user, setUser] = useState({});
 
     const getUser = (id) => {
         var API = REST_API.GET_USER_BY_ID;
-        fetch(BASE_URL + API.url.replace("{id}", id), { method: "GET" })
-            .then(res => res.json())
-            .then(
-                (res) => {
-                    console.log(res);
-                    var user = {
-                        "name": "Parul Sharma", "email": "paruldhoundiyal07@Gmail.com",
-                        dialCode: " +91", mobile: "8375083217", role: "Super Admin"
-                    };
-                    setUser(user)
+        fetch(BASE_URL + API.url.replace("{id}", id),
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => {
+                console.log(res);
+                return res.json()
+            }).then(
+                (response) => {
+                    console.log(response);
+                    if (response.status) {
+                        let user = response.response[0];
+                        user.role = getUserRole(user.role);
+                        setUser(user)
+                    }
+                    // var user = {
+                    //     "name": "Parul Sharma", "email": "paruldhoundiyal07@Gmail.com",
+                    //     dialCode: " +91", mobile: "8375083217", role: "Super Admin"
+                    // };
                 },
                 (error) => {
                     console.log(error);
@@ -35,7 +47,6 @@ export default function DashboardHeader() {
     const items = {
         class: "dashboard-container",
         rowClass: "dashboard-header-row",
-
         header: [
             [
                 {
