@@ -4,3 +4,16 @@ export const CONSTANTS = {
     USER_HEADER_TEXT: "Logged in user profile",
 
 }
+
+export const BASE_URL="http://ocalhost:8080";
+
+export const REST_API={
+    GET_USER_BY_ID:{
+        url:"/user/{id}",
+        method: "GET"
+    },
+    GET_USERS_LIST:{
+        url:"/user",
+        method:"GET"
+    }
+}

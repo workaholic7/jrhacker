@@ -1,7 +1,5 @@
 import React from 'react';
-import { Table, Button } from 'react-bootstrap';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faArrowAltCircleDown, faTrashAlt, faEdit } from '@fortawesome/free-regular-svg-icons';
+import { Table} from 'react-bootstrap';
 import Styles from './Styles';
 import CustomButton from './CustomButton';
 

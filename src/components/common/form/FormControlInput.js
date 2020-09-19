@@ -1,7 +1,7 @@
 import React from 'react';
-import { Form, Col, Row } from 'react-bootstrap';
+import { Form, Col } from 'react-bootstrap';
 
-export default function FormControlInput({ name, placeholder, value, onChange, inputClass, required,
+export default function FormControlInput({ name, placeholder, value, onChange, className, required,
     span, offset,disabled, hidden, type }) {
     return (
         
@@ -9,7 +9,7 @@ export default function FormControlInput({ name, placeholder, value, onChange, i
                 <Form.Control type={type || "input"}
                     name={name} placeholder={placeholder}
                     value={value} onChange={(e) => onChange(e)}
-                    required={required} disabled={disabled} className={"form-input " + inputClass}
+                    required={required} disabled={disabled} className={"form-input " + className}
                     style={{ 'display': hidden ? 'none' : 'inline' }} />
             </Col>
     )

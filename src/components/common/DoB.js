@@ -10,11 +10,11 @@ function DoB() {
         days.push({ id: i, name: i });
     }
 
-    for (var i = 1; i <= 12; i++) {
+    for (i = 1; i <= 12; i++) {
         months.push({ id: i, name: i });
     }
 
-    for (var i = 1950; i <= 2002; i++) {
+    for (i = 1950; i <= 2002; i++) {
         years.push({ id: i, name: i });
     }
 

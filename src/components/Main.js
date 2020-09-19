@@ -18,7 +18,7 @@ export default function Main() {
 
     
     return (
-        <div style={styles.body} >
+        <div>
             <SideBar />
             {/* <NotificationHeader count="0"/> */}
             <Router className="main" style={styles.content} >
@@ -36,11 +36,7 @@ export default function Main() {
 }
 
 const styles = {
-    body: {
-        position: 'fixed',
-        width: '100%',
-        height: '100%',
-    },
+    
 
     content: {
 

@@ -55,14 +55,15 @@ th, td{
   color: #61dafb;
 }
 
-.main{
-  top: 60px;    
+.main{  
   position: absolute;
   left: 256px;
   width: calc(100% - 256px);
   padding: 0px 20px;
   height: 100%;
   background: #E5E5E5 !important;
+  overflow: auto;
+  padding-bottom: 20px;
 }
 
 .login-text{
@@ -135,7 +136,7 @@ th, td{
   min-height: 100px;
   height: 100%;
   max-height: 600px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .divider{
@@ -206,7 +207,7 @@ padding: 0px !important;
 height: auto !important;
 }
 .modal{
-overflow-y: hidden !important;
+overflow: auto !important;
 max-height: 100% !important;
 }
 
@@ -276,5 +277,26 @@ color: #707683;
   font-weight: bold;
 }
 
+.header-select{
+  font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 30px;
+/* identical to box height, or 189% */
+
+letter-spacing: 0.18932px;
+
+color: rgba(0, 0, 0, 0.6);
+}
 
 
+.header-search-input{
+    font-style: normal;
+font-weight: normal;
+font-size: 16px !important;
+line-height: 30px;
+letter-spacing: 0.18932px;
+
+color: rgba(0, 0, 0, 0.8);
+border-color: #000000 !important;
+}

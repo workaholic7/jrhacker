@@ -10,8 +10,3 @@
 .student-search-section>.row,.student-search-section [class*='col-'],.student-search-section [class*='form-'] {
 background: #E5E5E5 !important;
 }
-
-
-.header-search-input{
-    width: 100%;
-}

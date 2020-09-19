@@ -7,18 +7,18 @@ FormSelect.propTypes = {
     label: PropTypes.string,
     options: PropTypes.array.isRequired
 }
-export default function FormSelect({ label, options, placeholder, onChange, selectClass, span, offset, labelSpan, labelOffset, labelStyle, labelClass }) {
+export default function FormSelect(props) {
 
     return (
         <>
-            {options &&
+            {props.options &&
                 <Form.Group as={Row}>
-                    {label ?
-                        <Col md={{ span: labelSpan, offset: labelOffset }}>
-                            <Form.Label style={labelStyle} className={labelClass}>{label}</Form.Label>
+                    {props.label ?
+                        <Col md={{ span: props.labelSpan, offset: props.labelOffset }}>
+                            <Form.Label style={props.labelStyle} className={props.labelClass}>{props.label}</Form.Label>
                         </Col>
                         : <> </>}
-                    <FormControlSelect />
+                    <FormControlSelect {...props}/>
                 </Form.Group>
             }
         </>

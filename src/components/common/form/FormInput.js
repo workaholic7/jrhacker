@@ -2,8 +2,8 @@ import React from 'react';
 import { Form, Col, Row } from 'react-bootstrap';
 import FormControlInput from './FormControlInput';
 
-export default function FormInput({ name, placeholder, value, onChange, inputClass, required,
-    span, offset, label, labelSpan, labelOffset, labelStyle, labelClass, disabled, hidden, type }) {
+export default function FormInput({ name, placeholder, value, onChange, className, required,
+    span, offset, label, labelSpan, labelOffset, labelStyle, labelClass, disabled, hidden, error }) {
     return (
         <Form.Group as={Row} controlId={"formBasic" + name}>
             {label ?
@@ -13,8 +13,9 @@ export default function FormInput({ name, placeholder, value, onChange, inputCla
                 : <></>}
                 <FormControlInput span={span} offset={offset} name={name} placeholder={placeholder}
                     value={value} onChange={onChange}
-                    required={required} disabled={disabled} className={inputClass}
+                    required={required} disabled={disabled} className={className}
                     hidden={hidden} />
+                    {error&&<span>{error}</span>}
         </Form.Group>
     )
 }

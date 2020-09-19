@@ -6,28 +6,24 @@ import SectionHeader from './SectionHeader';
 
 export default function ListView({ items }) {
     return (
-        <div>
             <Container fluid className='dashboard-container dashboard-list'>
-                {Object.keys(items).map((key) => {
+                {Object.keys(items).map((key, index) => {
                     var data = items[key];
                     if (key === "header") {
                         return (
-                            <>
-                                <Row style={{ height: '46px' }}>
+                                <Row  key={key+'-'+index} style={{ height: '46px' }}>
 
-                                    {Object.keys(data).map((type) => {
-                                        return <SectionHeader type={type} prop={data[type]} />
+                                    {Object.keys(data).map((type, index) => {
+                                        return <SectionHeader key={type+'-'+index} type={type} prop={data[type]} />
                                     })}
                                 </Row>
-                                <Divider />
-                            </>);
+                                );
                     } else if (key === "table") {
-                        return <TableView header={data.header} body={data.list} action={data.action} actionClass={data.actionClass} />
+                        return <TableView  key={key+'-'+index} header={data.header} body={data.list} action={data.action} actionClass={data.actionClass} />
                     } else {
                         return null;
                     }
                 })}
             </Container>
-        </div>
     )
 }

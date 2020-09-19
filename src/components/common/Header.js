@@ -5,33 +5,29 @@ import Divider from './Divider';
 import SectionHeader from './SectionHeader';
 function Header({ items }) {
     return (
-        <Container fluid className={items.class}>
-            {Object.keys(items).map((key) => {
+        <Container fluid  key={items.class} className={items.class}>
+            {Object.keys(items).map((key, index) => {
                 var data = items[key];
                 if (key === "header") {
                     return (
-                        <>
-                            <Row className={items.rowClass}>
+                            <Row key={key+'-'+index} className={items.rowClass}>
 
-                                {Object.keys(data).map((type) => {
-                                    return <SectionHeader type={type} prop={data[type]} />
+                                {Object.keys(data).map((type, index) => {
+                                    return <SectionHeader key={type+'-'+index} type={type} prop={data[type]} />
                                 })}
-                            </Row>
-                            {items.divider ? <Divider /> : <> </>}
-
-                        </>);
+                            </Row>);
                 } else if (key === "rows") {
                     return (Array.isArray(data) ?
                         data.map((rows) => {
                             return (
                                 <Row className="profile-row">
-                                    {rows.row.map((col) => {
-                                        return <Cell span={col.span} text={col.text} className={col.class} />
+                                    {rows.row.map((col, index) => {
+                                        return <Cell key={col+'-'+index} span={col.span} text={col.text} className={col.class} />
                                     })}
                                 </Row>
                             )
                         })
-                        : <></>)
+                        : <React.Fragment key={data}></React.Fragment>)
                 }
                 else {
                     return null;

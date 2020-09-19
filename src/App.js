@@ -14,7 +14,7 @@ function App() {
   return (
 
     <UserContext.Provider value={{id:10, role:""}}> 
-      <Main />
+      <Main className="main"/>
       {/* <Router>
         <Row>
           {loggedIn ?
