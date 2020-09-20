@@ -37,9 +37,7 @@ function DoB(props) {
     ]
 
     const handleDobChange = (e)=>{
-        console.log(e.target.name+"-"+e.target.value);
         setDate(date, date[e.target.name]=e.target.value);
-        console.log(date);
         props.onChange(date);
         //props.onChange("dob", e.target.name, e.target.value);
     }

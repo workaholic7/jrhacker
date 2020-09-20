@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import roles from '../../../static/roles.json'
 import CustomModal from '../../common/CustomModal';
 import { REST_API, BASE_URL } from '../../../Constants';
 import validate, {validateForm} from '../../Util';
 import moment from 'moment';
+import UserContext from '../../UserContext';
 
 
 
 function AddNewMemberModal(props) {
 
-    const [formData, setFormData] = useState({name: null, email: null, countryCode: null, mobile: null, role: null, dob: null});
-    const [errors, setErrors] = useState({name: '', email: '', countryCode: '', mobile: '', role: '', dob: []});
+    const [userId] = useContext(UserContext);
+
+    const [formData, setFormData] = useState({name: null, email: null, country: null, mobile: null, role: null, dob: null, modifiedBy: null});
+    const [errors, setErrors] = useState({name: '', email: '', country: '', mobile: '', role: '', dob: []});
     const [formResult, setFormResult] = useState({success:false, message:''});
     
     const handleChange = (event) =>{
@@ -66,15 +69,19 @@ function AddNewMemberModal(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let errors = validate(formData)
+        var data = formData;
+        let errors = validate(data);
         setErrors(errors);
+        
+        data.modifiedBy = userId;
         if(validateForm(errors)){
             let API = REST_API.CREATE_USER;
             fetch(BASE_URL + API.url, {
-                method: API.method, headers: {
-                    'Content-Type': 'application/json',
-                    body: JSON.stringify(formData)
-                }
+                method: API.method,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
             })
             .then(
                 res => { return res.json() })
@@ -96,7 +103,7 @@ function AddNewMemberModal(props) {
     }
     const modalFields = [{ name: "name", label: "Name", placeholder: "Type name of user", type: "input" },
     { name: "email", label: "Email", placeholder: "Type email of user", type: "input" },
-    { name: "countryCode", label: "Country Code", placeholder: "Enter country code", type: "input" },
+    { name: "country", label: "Country Code", placeholder: "Enter country code", type: "input" },
     { name: "mobile", label: "Mobile Number", placeholder: "Enter Mobile Number", type: "input", dataType: "number" },
     { name: "role", label: "Role", labelSpan: 12, span: 12, placeholder: "Select role of user", type: "select", options: roles },
     { name: "dob", label: "DoB", placeholder: "Type name of user", type: "dob", onChange:dobChange }
