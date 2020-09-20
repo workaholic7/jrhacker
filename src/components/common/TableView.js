@@ -2,11 +2,9 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import Styles from './Styles';
 import CustomButton from './CustomButton';
-import Paging from './Paging';
 
 function TableView(props) {
     return (
-        <div>
             <Table hover size="md" responsive >
                 <thead>
                     <tr >
@@ -30,8 +28,6 @@ function TableView(props) {
                     )}
                 </tbody>
             </Table>
-
-        </div >
     )
 }
 

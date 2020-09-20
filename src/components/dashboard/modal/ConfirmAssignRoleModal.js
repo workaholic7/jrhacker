@@ -3,9 +3,6 @@ import CustomModal from '../../common/CustomModal';
 
 function ConfirmAssignRoleModal(props) {
 
-    const assignRoleFields = [
-
-    ];
     const fields = {
         show: props.show,
         close: props.close,

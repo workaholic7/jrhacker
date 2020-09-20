@@ -8,13 +8,13 @@ function TeachersList(props) {
 
 
 
-    const filterUsers = (e) => {
-        console.log(e.target.value);
-    }
+    // const filterUsers = (e) => {
+    //     console.log(e.target.value);
+    // }
 
-    const searchUsers = (e) => {
-        console.log(e.target.value);
-    }
+    // const searchUsers = (e) => {
+    //     console.log(e.target.value);
+    // }
 
     const list = {
         header: [

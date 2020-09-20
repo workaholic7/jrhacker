@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TeachersList from './TeacherList';
-import AddNewTeacherModal from './modal/AddNewTeacherModal';
 
 function Teachers() {
     const handleDetailClick = () => {

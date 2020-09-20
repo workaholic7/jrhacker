@@ -1,4 +1,3 @@
-import React from 'react';
 import roles from '../static/roles.json';
 
 export function getUserRole(roleId) {

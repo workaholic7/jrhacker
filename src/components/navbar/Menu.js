@@ -1,7 +1,5 @@
-import React, { useState, useContext } from 'react';
 import { Link } from '@reach/router';
-import UserContext from '../../App';
-import JuniorHacker from '../../images/icon/students.png';
+import React, { useState } from 'react';
 
 
 export default function Menu() {

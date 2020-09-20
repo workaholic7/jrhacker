@@ -56,15 +56,15 @@ function AddNewMemberModal(props) {
                     console.log(res);
                     if(res.status){
                         isSuccess(true);
-                        setMessage(res.response);
+                        props.close();
                     } else{
-                        isSuccess(true);
+                        isSuccess(false);
                         setMessage(res.response);
                     }
                 },
                 (error) => {
                     console.log(error);
-                    isSuccess(true);
+                    isSuccess(false);
                     setMessage("Some error occurred. Please try again");
                 });
     }

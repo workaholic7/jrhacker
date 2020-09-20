@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Row, Container } from 'react-bootstrap';
-import TableView from '../common/TableView';
+import React from 'react';
+import { Container, Row } from 'react-bootstrap';
 import Divider from '../common/Divider';
-import SectionHeader from './SectionHeader';
+import TableView from '../common/TableView';
 import Paging from './Paging';
+import SectionHeader from './SectionHeader';
 
 export default function ListView({ items }) {
     return (
@@ -24,7 +24,7 @@ export default function ListView({ items }) {
                 } else if (key === "divider") {
                     return <Divider key={`$key-$index`}/>
                 } else if (key === "paging") {
-                    return <Paging pages={data.totalPages} onPageClick={data.handlePagination} currentPage={data.activePage} />
+                    return <Paging key={key+"-"+index} pages={data.totalPages} onPageClick={data.handlePagination} currentPage={data.activePage} />
                 } else {
                     return <></>;
                 }

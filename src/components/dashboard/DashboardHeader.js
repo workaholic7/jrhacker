@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../common/Header'
 import { REST_API, BASE_URL } from '../../Constants';
-import { getUserRole } from '../Util'
+import { getUserRole } from '../Util';
+import ReactLoading from 'react-loading';
+
 export default function DashboardHeader() {
 
+    const [isLoading, setLoading] = useState(true);
     const [user, setUser] = useState({});
 
     const getUser = (id) => {
@@ -24,8 +27,10 @@ export default function DashboardHeader() {
                     if (response.status) {
                         let user = response.response[0];
                         user.role = getUserRole(user.role);
-                        setUser(user)
+                        setUser(user);
+                        setLoading(false);
                     }
+
                 },
                 (error) => {
                     console.log(error);
@@ -131,6 +136,9 @@ export default function DashboardHeader() {
 
 
     return (
-        <Header items={items} />
+        <>
+        {isLoading? <ReactLoading type="spinningBubbles" className="loading" />:
+        <Header items={items} />}
+        </>
     )
 }

@@ -36,7 +36,7 @@ function UsersList(props) {
 
     const filterUsers = (e) => {
         var API = REST_API.GET_USERS_LIST;
-        fetch(BASE_URL + API.url + "?id=" + "1")
+        fetch(BASE_URL + API.url + "?id=1")
             .then(res => res.json())
             .then(
                 (res) => {
@@ -59,6 +59,7 @@ function UsersList(props) {
 
     const handlePageChange = (pageNo) => {
         console.log(pageNo);
+        setActivePage(pageNo);
     }
 
 

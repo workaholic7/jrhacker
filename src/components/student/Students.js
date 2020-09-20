@@ -1,8 +1,6 @@
-import React from 'react'
-import StudentsList from './StudentsList'
-
-import Header from '../common/Header'
-import StudentHeader from './StudentHeader'
+import React from 'react';
+import StudentsList from './StudentsList';
+import StudentHeader from './StudentHeader';
 
 export default function Students() {
 

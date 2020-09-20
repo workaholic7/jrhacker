@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
-import { Row, Col } from 'react-bootstrap';
 import Main from './components/Main';
-import Login from './components/login/Login';
-import ForgotPassword from './components/login/ForgotPassword';
 import UserProvider from './components/UserProvider';
 
 export const UserContext = React.createContext();
@@ -15,7 +11,7 @@ function App() {
   return (
     <UserProvider>
       <Main />
-      {/* <Router>
+      {/* <Router>ß
         <Row>
           {loggedIn ?
             <Col xl={2} md={2} style={{ padding: '0px' }}>

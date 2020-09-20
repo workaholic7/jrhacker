@@ -49,19 +49,3 @@ export default function LoginForm() {
         </Col>
     )
 }
-
-const Styles={
-    loginForm:{
-        //position: 'absolute',
-        width: '367px',
-        height: '581px',
-        //left: '705px',
-        top: '',
-
-        background: '#FFFFFF',
-        /* Shadow medium */
-
-        boxShadow: '1px 2px 6px rgba(0, 0, 0, 0.14)',
-        borderRadius: '8px',
-    }
-}

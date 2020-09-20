@@ -82,6 +82,13 @@ th, td{
   width: 100%;
 }
 
+.loading{
+  fill: rgb(21, 127, 251) !important;
+  width: 50px !important;
+  margin: auto !important;
+  margin-top: calc((var(--content-height) - 120px) / 2) !important;
+}
+
 .modal-button{
   background: #5B5353 !important;
   border-radius: 3.3px !important;
@@ -136,7 +143,6 @@ th, td{
   min-height: 100px;
   height: 100%;
   max-height: 600px;
-  overflow: auto;
 }
 
 .divider{
@@ -304,4 +310,14 @@ border-color: #000000 !important;
   background: #4452C8 !important;
 }
 
+.table{
+width: 96%;
+    margin-bottom: 1rem;
+    color: #212529;
+    margin: auto;
+    margin-top: 10px;
+}
 
+.table-responsive{
+  height: 475px;
+}

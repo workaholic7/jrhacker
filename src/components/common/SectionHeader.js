@@ -1,6 +1,5 @@
 import React from 'react'
 import Cell from './Cell';
-import { Col } from 'react-bootstrap';
 import CustomButton from './CustomButton';
 import FormControlSelect from './form/FormControlSelect';
 import FormControlInput from './form/FormControlInput';

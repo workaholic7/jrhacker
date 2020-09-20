@@ -14,7 +14,6 @@ function Header({ items }) {
                             return (
                                 <>
                                     <Row className={items.rowClass}>
-
                                         {Object.keys(row).map((type, index) => {
                                             return <SectionHeader key={key+"-"+index} type={type} prop={row[type]} />
                                         })}
@@ -22,11 +21,8 @@ function Header({ items }) {
                                 </>);
                         })
                     );
-
-
                 } else if (key === 'divider') {
-                    return <Divider />;
-
+                    return <Divider key={key + '-' + index}/>;
                 } else if (key === "rows") {
                     return (Array.isArray(data) ?
                         data.map((rows) => {
@@ -41,12 +37,10 @@ function Header({ items }) {
                         : <React.Fragment key={data}></React.Fragment>)
                 }
                 else {
-                    return <></>;
+                    return <React.Fragment key={data}></React.Fragment>;
                 }
             })}
-
         </Container >
-
     )
 }
 
