@@ -22,8 +22,8 @@ function Users() {
     return (
         <>
             <UsersList handleActionClick={handleActionClick} showAddNewMemberModal={showAddNewMemberModal} />
-            {showAddNewMember && 
-            <AddNewMemberModal show={showAddNewMember} close={closeAddNewMemberModal} />}
+            {showAddNewMember &&
+                <AddNewMemberModal show={showAddNewMember} close={closeAddNewMemberModal} />}
             <AssignRoleModal userId={userId} show={showAssignRole} close={closeAssignRoleModal} />
         </>
     )
