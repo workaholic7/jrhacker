@@ -86,7 +86,14 @@ th, td{
   fill: rgb(21, 127, 251) !important;
   width: 50px !important;
   margin: auto !important;
-  margin-top: calc((var(--content-height) - 120px) / 2) !important;
+  background: #E5E5E5;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100% !important;
+}
+.loading>svg{
+  background: #E5E5E5 !important;
 }
 
 .modal-button{
@@ -325,7 +332,13 @@ width: 96%;
 .error-message{
   font-size: 12px;
   color:red;
-  padding: 0px 15px;;
+  padding: 0px 15px;
+}
+
+.error-form-result{
+  font-size: 12px;
+  color:red;
+  padding: 0px 30px;
 }
 
 /* Chrome, Safari, Edge, Opera */

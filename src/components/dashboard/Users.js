@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
+import Loading from 'react-loading';
 
 const AddNewMemberModal = React.lazy(() => import('./modal/AddNewMemberModal'));
 const AssignRoleModal = React.lazy(() => import('./modal/AssignRoleModal'));
@@ -22,18 +22,13 @@ function Users() {
         showAssignRoleModal();
     }
 
-
-
-
     return (
         <>
-            <Suspense fallback={<div>Loading...</div>}>
-                <UsersList handleActionClick={handleActionClick} showAddNewMemberModal={showAddNewMemberModal} />
-
-                {showAddNewMember && <AddNewMemberModal show={showAddNewMember} close={closeAddNewMemberModal} />}
-
-                {showAssignRole && <AssignRoleModal userId={userId} show={showAssignRole} close={closeAssignRoleModal} />}
-            </Suspense>
+            <UsersList handleActionClick={handleActionClick} showAddNewMemberModal={showAddNewMemberModal} />
+            {showAddNewMember && 
+            <AddNewMemberModal show={showAddNewMember} close={closeAddNewMemberModal} />}
+            {showAssignRole && 
+            <AssignRoleModal userId={userId} show={showAssignRole} close={closeAssignRoleModal} />}
         </>
     )
 }

@@ -48,7 +48,7 @@ export default function TeacherHeader() {
                     label: "Search",
                     span: 2,
                     offset: 4,
-                    class: "custom-button profile-header-button"
+                    className: "custom-button profile-header-button"
                 },
                 {
                     type: "button",
@@ -56,7 +56,7 @@ export default function TeacherHeader() {
                     span: 2,
                     offset: 2,
                     onClick: showAddNewTeacherModal,
-                    class: "custom-button profile-header-button teacher-profile-header-button"
+                    className: "custom-button profile-header-button teacher-profile-header-button"
                 }
             ]
         ]

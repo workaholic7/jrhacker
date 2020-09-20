@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import Header from '../common/Header'
-import { REST_API, BASE_URL } from '../../Constants';
+import React, { useEffect, useState } from 'react';
+import { BASE_URL, REST_API } from '../../Constants';
+import Header from '../common/Header';
 import { getUserRole } from '../Util';
-import ReactLoading from 'react-loading';
 
 export default function DashboardHeader() {
 
-    const [isLoading, setLoading] = useState(true);
     const [user, setUser] = useState({});
 
     const getUser = (id) => {
@@ -28,7 +26,6 @@ export default function DashboardHeader() {
                         let user = response.response[0];
                         user.role = getUserRole(user.role);
                         setUser(user);
-                        setLoading(false);
                     }
 
                 },
@@ -62,7 +59,7 @@ export default function DashboardHeader() {
                     label: "Update Profile",
                     span: 2,
                     offset: 6,
-                    class: "custom-button profile-header-button"
+                    className: "custom-button profile-header-button"
                 }
             ]
         ],
@@ -136,9 +133,6 @@ export default function DashboardHeader() {
 
 
     return (
-        <>
-        {isLoading? <ReactLoading type="spinningBubbles" className="loading" />:
-        <Header items={items} />}
-        </>
+        <Header items={items} />
     )
 }

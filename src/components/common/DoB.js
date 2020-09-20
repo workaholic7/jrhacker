@@ -1,38 +1,44 @@
 import React from 'react';
 import { Form, Row, Col } from 'react-bootstrap';
-function DoB() {
+import moment from "moment";
+function DoB(props) {
 
     const days = [{ id: "", name: "" }];
     const months = [{ id: "", name: "" }];
     const years = [{ id: "", name: "" }];
-
     for (var i = 1; i <= 31; i++) {
         days.push({ id: i, name: i });
     }
-
     for (i = 1; i <= 12; i++) {
         months.push({ id: i, name: i });
     }
-
-    for (i = 1950; i <= 2002; i++) {
+    let year = moment().year();
+    for (i = year-75; i <= year; i++) {
         years.push({ id: i, name: i });
     }
 
-
     const dobFields = [
         {
+            name: "date",
             placeholder: "Date",
             options: days,
         },
         {
+            name: "month",
             placeholder: "Month",
             options: months,
         },
         {
+            name: "year",
             placeholder: "Year",
             options: years,
         }
     ]
+
+    const handleChange = (e)=>{
+        console.log(e.target.name+"-", e.target.value);
+        props.onChange("dob", e.target.name, e.target.value);
+    }
 
 
     return (
@@ -43,7 +49,7 @@ function DoB() {
 
             {dobFields.map((element) => {
                 return <Col md={{ span: "4" }}>
-                    <Form.Control className="form-select custom-modal-select" as="select" key={element.placeholder} /*onChange={onChange}*/>
+                    <Form.Control name={element.name} className="form-select custom-modal-select" as="select" key={element.placeholder} onChange={handleChange}>
                         <option value="" selected disabled hidden key={element.placeholder}>{element.placeholder}</option>
                         {element.options.map((data, index) =>
                             <option value={data.id} key={data + index} >

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Form, Col } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+
 
 export default function FormControlInput({ name, placeholder, value, onChange, className, required,
     span, offset, disabled, hidden, type }) {
@@ -13,4 +15,17 @@ export default function FormControlInput({ name, placeholder, value, onChange, c
                 style={{ 'display': hidden ? 'none' : 'inline' }} />
         </Col>
     )
+}
+FormControlInput.propTypes = {
+  className: PropTypes.any,
+  disabled: PropTypes.any,
+  hidden: PropTypes.any,
+  name: PropTypes.any,
+  offset: PropTypes.string,
+  onChange: PropTypes.func,
+  placeholder: PropTypes.any,
+  required: PropTypes.any,
+  span: PropTypes.string,
+  type: PropTypes.string,
+  value: PropTypes.any
 }

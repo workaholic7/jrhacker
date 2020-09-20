@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react'
 import roles from '../../../static/roles.json'
 import CustomModal from '../../common/CustomModal';
 import { REST_API, BASE_URL } from '../../../Constants';
-import validate from '../../Util';
+import validate, {validateForm} from '../../Util';
+
+
 
 function AddNewMemberModal(props) {
 
-    const [formData, setFormData] = useState({});
-    const [errors, setErrors] = useState({});
-    const [success, isSuccess] = useState(true);
-    const [message, setMessage] = useState('');
-
-    const handleChange = (event) => {
+    const [formData, setFormData] = useState({name: null, email: null, countryCode: null, mobile: null, role: null, dob: null});
+    const [errors, setErrors] = useState({name: '', email: '', countryCode: '', mobile: '', role: '', dob: ''});
+    const [formResult, setFormResult] = useState({success:false, message:''});
+    
+    const handleChange = (event) =>{
         event.preventDefault();
         let error = JSON.parse(JSON.stringify(errors));
         const { name, value } = event.target;
@@ -42,33 +43,33 @@ function AddNewMemberModal(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setErrors(validate(formData));
-        let API = REST_API.CREATE_USER;
-        var url = BASE_URL + API.url;
-        fetch(url, {
-            method: API.method, headers: {
-                'Content-Type': 'application/json',
-                body: JSON.stringify(formData)
-            }
-        })
+        let errors = validate(formData)
+        setErrors(errors);
+        if(validateForm(errors)){
+            let API = REST_API.CREATE_USER;
+            fetch(BASE_URL + API.url, {
+                method: API.method, headers: {
+                    'Content-Type': 'application/json',
+                    body: JSON.stringify(formData)
+                }
+            })
             .then(
                 res => { return res.json() })
             .then(
                 (res) => {
                     console.log(res);
-                    if (res.status) {
-                        isSuccess(true);
+                    if(res.status){
                         props.close();
-                    } else {
-                        isSuccess(false);
-                        setMessage(res.response);
+                    } else{
+                        setFormResult({success: false, message: res.statusMessage});
                     }
                 },
                 (error) => {
                     console.log(error);
-                    isSuccess(false);
-                    setMessage("Some error occurred. Please try again");
-                });
+                    setFormResult({success: false, message: "Some error occurred. Please try again."});
+                }
+            );
+        }
     }
     const modalFields = [{ name: "name", label: "Name", placeholder: "Type name of user", type: "input" },
     { name: "email", label: "Email", placeholder: "Type email of user", type: "input" },
@@ -77,6 +78,7 @@ function AddNewMemberModal(props) {
     { name: "role", label: "Role", labelSpan: 12, span: 12, placeholder: "Select role of user", type: "select", options: roles },
     { name: "dob", label: "DoB", placeholder: "Type name of user", type: "dob" }
     ];
+
     const fields = {
         show: props.show,
         close: props.close,
@@ -87,19 +89,20 @@ function AddNewMemberModal(props) {
         onSubmit: handleSubmit,
         formData: formData,
         errors: errors,
+        formResult: formResult,
         buttons: [
             {
                 label: "Cancel",
                 span: 3,
                 offset: 3,
                 onClick: props.close,
-                class: "modal-button"
+                className: "modal-button"
             },
             {
                 label: "Save",
                 type: "submit",
                 span: 3,
-                class: "modal-button modal-submit-button"
+                className: "modal-button modal-submit-button"
             }
         ]
     };

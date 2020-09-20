@@ -1,14 +1,13 @@
-import React, {useState} from 'react'
-import roles from '../../../static/roles.json'
+import React, { useState } from 'react';
+import { BASE_URL, REST_API } from '../../../Constants';
+import roles from '../../../static/roles.json';
 import CustomModal from '../../common/CustomModal';
-import { Suspense} from 'react';
-import { REST_API, BASE_URL } from '../../../Constants';
 const ConfirmAssignRoleModal = React.lazy(() => import('./ConfirmAssignRoleModal'));
 
 function AssignRoleModal(props) {
     const [formData, setFormData] = useState({modifiedBy: "1", userId:props.userId, role:''});
-    const [success, isSuccess] = useState(true);
-    const [message, setMessage] = useState('');
+    const [formResult, setFormResult] = useState({success:false, message:''});
+    const [error, setError]= useState({role:''});
     const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
     const closeConfirmationDialogModal = () => setShowConfirmationDialog(false);
     const showConfirmationDialogModal = () => setShowConfirmationDialog(true);
@@ -21,35 +20,37 @@ function AssignRoleModal(props) {
     }
 
     const showConfirmationModal = () => {
-        props.close();
-        showConfirmationDialogModal();
+        if(formData.role !==""){
+            props.close();
+            showConfirmationDialogModal();
+        } else{
+            setError({role:"Please select role"});
+        }
     }
 
     const handleRoleSubmit = (e)=>{
         e.preventDefault();
-        let API = REST_API.CHANGE_ROLE;
-        fetch(BASE_URL + API.url, { method: API.method,headers: {
-            'Content-Type': 'application/json',
-            body: JSON.stringify(formData),
-        }})
+            let API = REST_API.CHANGE_ROLE;
+            fetch(BASE_URL + API.url, { method: API.method,headers: {
+                'Content-Type': 'application/json',
+                body: JSON.stringify(formData),
+            }})
             .then(
                 res => {return res.json()})
             .then(
                 (res) => {
                     console.log(res);
                     if(res.status){
-                        isSuccess(true);
-                        setMessage(res.response);
+                        props.close();
                     } else{
-                        isSuccess(false);
-                        setMessage(res.response);
+                        setFormResult({success: false, message: res.response});
                     }
                 },
                 (error) => {
                     console.log(error);
-                    isSuccess(false);
-                    setMessage("Some error occurred. Please try again");
-                });
+                    setFormResult({success: false, message: "Some error occurred. Please try again."});
+                }
+            );
     }
 
     const assignRoleFields = [
@@ -70,29 +71,27 @@ function AssignRoleModal(props) {
         class: "custom-modal-title",
         fields: assignRoleFields,
         onChange: handleRoleChange,
+        errors: error,
         buttons: [
             {
                 label: "Cancel",
                 span: 6,
                 onClick: props.close,
-                class: "modal-button"
+                className: "modal-button"
             },
             {
                 label: "Save",
                 span: 6,
-                class: "modal-button modal-submit-button",
+                className: "modal-button modal-submit-button",
                 onClick: showConfirmationModal
             }
         ]
-
     }
 
     return (
         <>
-        <CustomModal items={fields} />
-        <Suspense fallback={<div>Loading...</div>}>
-                <ConfirmAssignRoleModal onSubmit={handleRoleSubmit} show={showConfirmationDialog} close={closeConfirmationDialogModal} />
-            </Suspense>
+            <CustomModal items={fields} />
+            <ConfirmAssignRoleModal formResult={formResult} onSubmit={handleRoleSubmit} show={showConfirmationDialog} close={closeConfirmationDialogModal} />
         </>
     );
 }

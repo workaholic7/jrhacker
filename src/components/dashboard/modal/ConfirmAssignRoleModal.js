@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import CustomModal from '../../common/CustomModal';
 
 function ConfirmAssignRoleModal(props) {
@@ -15,23 +15,28 @@ function ConfirmAssignRoleModal(props) {
             span: "12",
             class: "custom-modal-label"
         }],
+        formResult: props.formResult,
         buttons: [
             {
                 label: "No",
                 span: 6,
                 offset: 0,
                 onClick: props.close,
-                class: "modal-button"
+                className: "modal-button"
             },
             {
                 label: "Yes, Change role",
                 type: "submit",
                 span: 6,
-                class: "modal-button modal-submit-button"
+                className: "modal-button modal-submit-button"
             }
         ]
 
     }
+
+    useEffect(() => {
+        
+    }, [props])
 
     return (
         <CustomModal items={fields} />

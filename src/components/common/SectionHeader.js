@@ -9,7 +9,7 @@ export default function SectionHeader({ prop }) {
     if (prop.type === "label") {
         return <Cell span={prop.span} text={prop.label} className={prop.class} style={{ margin: 'auto' }} />
     } else if (prop.type === "button") {
-        return (<CustomButton span={prop.span} offset={prop.offset} buttonText={prop.label} className={prop.class} onClick={prop.onClick} />);
+        return (<CustomButton span={prop.span} offset={prop.offset} label={prop.label} className={prop.className} onClick={prop.onClick} />);
     } else if (prop.type === 'select') {
         return (<FormControlSelect {...prop} />);
     } else if (prop.type === 'input') {

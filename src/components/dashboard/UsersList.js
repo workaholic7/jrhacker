@@ -92,7 +92,7 @@ function UsersList(props) {
                 span: 2,
                 offset: 0,
                 onClick: props.showAddNewMemberModal,
-                class: "custom-button profile-header-button"
+                className: "custom-button profile-header-button"
             }
         ],
         divider: true,

@@ -22,7 +22,7 @@ function TableView(props) {
                                     {element[key]}
                                 </td> : <React.Fragment key={'id' + index}></React.Fragment>
                             )}
-                            {props.action ? <td><CustomButton variant="link" buttonText={props.linkName} onClick={() => props.action(element.id)} className={props.actionClass} /></td>
+                            {props.action ? <td><CustomButton variant="link" label={props.linkName} onClick={() => props.action(element.id)} className={props.actionClass} /></td>
                                 : <React.Fragment key={'download' + index}></React.Fragment>}
                         </tr>
                     )}

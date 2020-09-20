@@ -11,7 +11,7 @@ const Styles = {
         color: '#707683'
 
     },
-    buttonText: {
+    label: {
         fontSize: '10.725px',
         fontWeight: 'bold'
     }
