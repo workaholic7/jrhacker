@@ -14,9 +14,6 @@ function Users() {
     const closeAssignRoleModal = () => setShowAssignRole(false);
     const showAssignRoleModal = () => setShowAssignRole(true);
 
-
-    //TODO change to 
-
     const handleActionClick = (id) => {
         setUserId(id);
         showAssignRoleModal();
@@ -27,8 +24,7 @@ function Users() {
             <UsersList handleActionClick={handleActionClick} showAddNewMemberModal={showAddNewMemberModal} />
             {showAddNewMember && 
             <AddNewMemberModal show={showAddNewMember} close={closeAddNewMemberModal} />}
-            {showAssignRole && 
-            <AssignRoleModal userId={userId} show={showAssignRole} close={closeAssignRoleModal} />}
+            <AssignRoleModal userId={userId} show={showAssignRole} close={closeAssignRoleModal} />
         </>
     )
 }

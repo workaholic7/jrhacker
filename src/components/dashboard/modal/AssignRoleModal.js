@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { BASE_URL, REST_API } from '../../../Constants';
 import roles from '../../../static/roles.json';
 import CustomModal from '../../common/CustomModal';
+import UserContext from '../../UserContext';
 const ConfirmAssignRoleModal = React.lazy(() => import('./ConfirmAssignRoleModal'));
 
 function AssignRoleModal(props) {
-    const [formData, setFormData] = useState({modifiedBy: "1", userId:props.userId, role:''});
+    const [userId,role] = useContext(UserContext);
+    const [formData, setFormData] = useState({modifiedBy: userId, userId:'', role:''});
     const [formResult, setFormResult] = useState({success:false, message:''});
     const [error, setError]= useState({role:''});
     const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
@@ -16,6 +18,7 @@ function AssignRoleModal(props) {
         const {value} = e.target;
         var data = formData;
         data.role = value;
+        data.userId =props.userId;
         setFormData(data);
     }
 
@@ -33,8 +36,8 @@ function AssignRoleModal(props) {
             let API = REST_API.CHANGE_ROLE;
             fetch(BASE_URL + API.url, { method: API.method,headers: {
                 'Content-Type': 'application/json',
-                body: JSON.stringify(formData),
-            }})
+                
+            },body: JSON.stringify(formData),})
             .then(
                 res => {return res.json()})
             .then(

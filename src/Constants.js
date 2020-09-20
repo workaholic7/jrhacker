@@ -17,7 +17,7 @@ export const REST_API = {
         method: "POST"
     },
     CHANGE_ROLE:{
-        url:"/user/updaterole",
+        url:"user/updaterole",
         method:"POST",
     }
 }

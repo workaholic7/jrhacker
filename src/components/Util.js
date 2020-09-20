@@ -21,7 +21,9 @@ export default function validate(values) {
     } if (!values.role) {
         errors.role = 'Role is required';
     } if (!values.dob) {
-        errors.dob = 'Date of birth is required';
+        let dob = [];
+        dob.push('Date of birth is required');
+        errors.dob = dob;
     }
 
     return errors;

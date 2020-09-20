@@ -47,7 +47,13 @@ function CustomModal({ items }) {
                                 </Col>
                             </Row>);
                         } else if (type === "dob") {
-                            return <DoB value={formData&& formData[element.name]} key={element+'-'+index} error={errors && errors[element.name]} onChange={items.onChange}/>;
+                            return (<><DoB value={formData&& formData[element.name]} key={element+'-'+index} onChange={element.onChange}/> 
+                            {errors[element.name] && errors[element.name].length>0 && errors[element.name].map((error) => {
+                               return  <div className="dob-error-message">{error}</div>
+                            })}
+                            {/* <span className="error-message">{errors[element.name]}</span> */}
+                            </>
+                            );
                         } else {
                             return <></>;
                         }

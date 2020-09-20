@@ -3,13 +3,14 @@ import roles from '../../../static/roles.json'
 import CustomModal from '../../common/CustomModal';
 import { REST_API, BASE_URL } from '../../../Constants';
 import validate, {validateForm} from '../../Util';
+import moment from 'moment';
 
 
 
 function AddNewMemberModal(props) {
 
     const [formData, setFormData] = useState({name: null, email: null, countryCode: null, mobile: null, role: null, dob: null});
-    const [errors, setErrors] = useState({name: '', email: '', countryCode: '', mobile: '', role: '', dob: ''});
+    const [errors, setErrors] = useState({name: '', email: '', countryCode: '', mobile: '', role: '', dob: []});
     const [formResult, setFormResult] = useState({success:false, message:''});
     
     const handleChange = (event) =>{
@@ -39,6 +40,28 @@ function AddNewMemberModal(props) {
         }
         setErrors(error);
         setFormData(formData, formData[name] = value);
+    }
+
+    const dobChange = ({day, month,year}) =>{
+        let error = JSON.parse(JSON.stringify(errors));
+        if(day && month && year){
+            var momentDate = moment(day+"-"+month+"-"+year, "DD-MM-YYYY").format("DD-MM-YYYY");
+            error.dob = [];
+            setErrors(error);
+            setFormData(formData, formData["dob"]= momentDate );
+        } else{
+            error.dob=[];
+            if(!day){
+                error.dob.push("Day cannot be blank");
+            }
+            if(!month){
+                error.dob.push("Month cannot be blank");
+            }
+            if(!year){
+                error.dob.push("Year cannot be blank");
+            }
+            setErrors(error);
+        }
     }
 
     const handleSubmit = (e) => {
@@ -76,7 +99,7 @@ function AddNewMemberModal(props) {
     { name: "countryCode", label: "Country Code", placeholder: "Enter country code", type: "input" },
     { name: "mobile", label: "Mobile Number", placeholder: "Enter Mobile Number", type: "input", dataType: "number" },
     { name: "role", label: "Role", labelSpan: 12, span: 12, placeholder: "Select role of user", type: "select", options: roles },
-    { name: "dob", label: "DoB", placeholder: "Type name of user", type: "dob" }
+    { name: "dob", label: "DoB", placeholder: "Type name of user", type: "dob", onChange:dobChange }
     ];
 
     const fields = {

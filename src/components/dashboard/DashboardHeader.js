@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { BASE_URL, REST_API } from '../../Constants';
 import Header from '../common/Header';
+import UserContext from '../UserContext';
 import { getUserRole } from '../Util';
 
 export default function DashboardHeader() {
 
     const [user, setUser] = useState({});
+    const [userId] = useContext(UserContext);
 
-    const getUser = (id) => {
+    const getUser = () => {
         var API = REST_API.GET_USER_BY_ID;
-        fetch(BASE_URL + API.url.replace("{id}", id),
+        fetch(BASE_URL + API.url.replace("{id}", userId),
             {
                 method: 'GET',
                 headers: {
@@ -39,7 +41,7 @@ export default function DashboardHeader() {
                 });
     }
     useEffect(() => {
-        getUser(1);
+        getUser();
     }, []);
 
     const items = {

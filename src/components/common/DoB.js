@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Form, Row, Col } from 'react-bootstrap';
 import moment from "moment";
 function DoB(props) {
+    const [date, setDate] = useState({day:'', month:'', year:''});
 
     const days = [{ id: "", name: "" }];
     const months = [{ id: "", name: "" }];
@@ -19,8 +20,8 @@ function DoB(props) {
 
     const dobFields = [
         {
-            name: "date",
-            placeholder: "Date",
+            name: "day",
+            placeholder: "Day",
             options: days,
         },
         {
@@ -35,9 +36,12 @@ function DoB(props) {
         }
     ]
 
-    const handleChange = (e)=>{
-        console.log(e.target.name+"-", e.target.value);
-        props.onChange("dob", e.target.name, e.target.value);
+    const handleDobChange = (e)=>{
+        console.log(e.target.name+"-"+e.target.value);
+        setDate(date, date[e.target.name]=e.target.value);
+        console.log(date);
+        props.onChange(date);
+        //props.onChange("dob", e.target.name, e.target.value);
     }
 
 
@@ -46,10 +50,9 @@ function DoB(props) {
             <Col md="12">
                 <Form.Label className="custom-modal-label">DOB</Form.Label>
             </Col>
-
             {dobFields.map((element) => {
                 return <Col md={{ span: "4" }}>
-                    <Form.Control name={element.name} className="form-select custom-modal-select" as="select" key={element.placeholder} onChange={handleChange}>
+                    <Form.Control name={element.name} className="form-select custom-modal-select" as="select" key={element.placeholder} onChange={(e)=>handleDobChange(e)}>
                         <option value="" selected disabled hidden key={element.placeholder}>{element.placeholder}</option>
                         {element.options.map((data, index) =>
                             <option value={data.id} key={data + index} >
@@ -59,9 +62,7 @@ function DoB(props) {
                 </Col>
             })}
         </Form.Group>
-
     )
-
 }
 
 
