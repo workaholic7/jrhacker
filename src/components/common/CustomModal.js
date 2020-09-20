@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Modal, Form, Row, Col } from 'react-bootstrap';
 import FormInput from './form/FormInput';
 import CustomButton from './CustomButton';
@@ -7,9 +7,9 @@ import DoB from './DoB';
 
 function CustomModal({ items }) {
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log("Use")
-    },[items]);
+    }, [items.errors]);
     const errors = items.errors;
     const formData = items.formData;
     return (
@@ -20,27 +20,27 @@ function CustomModal({ items }) {
                 </div>
             </Modal.Header>
             <Modal.Body>
-                <Form onSubmit={(e)=>items.onSubmit(e)}>
+                <Form onSubmit={(e) => items.onSubmit(e)}>
                     {items.fields.map((element, index) => {
                         let type = element.type;
                         if (type === "select") {
-                            return <FormSelect key={element+'-'+index} placeholder={element.placeholder} options={element.options} 
-                                name={element.name} value={formData && formData[element.name]}label={element.label} span={element.span} labelSpan={element.labelSpan} 
+                            return <FormSelect key={element + '-' + index} placeholder={element.placeholder} options={element.options}
+                                name={element.name} value={formData && formData[element.name]} label={element.label} span={element.span} labelSpan={element.labelSpan}
                                 labelClass="custom-modal-label" className="custom-modal-select" onChange={items.onChange} error={errors && errors[element.name]} />;
 
                         } else if (type === "input") {
-                            return <FormInput name={element.name} key={element.name + index} label={element.label} 
-                            placeholder={element.placeholder} value={formData&& formData[element.name]} required span="12" labelSpan="12" labelClass="custom-modal-label" 
-                            className="custom-modal-input" onChange={items.onChange} error={errors && errors[element.name]} />;
+                            return <FormInput name={element.name} key={element.name + index} label={element.label} type={element.dataType}
+                                placeholder={element.placeholder} value={formData && formData[element.name]} required span="12" labelSpan="12" labelClass="custom-modal-label"
+                                className="custom-modal-input" onChange={items.onChange} error={errors && errors[element.name]} />;
 
                         } else if (type === "label") {
-                            return (<Row key={element+'-'+index} >
+                            return (<Row key={element + '-' + index} >
                                 <Col md={element.span} className={element.class}>
                                     {element.label}
                                 </Col>
                             </Row>);
                         } else if (type === "dob") {
-                            return <DoB  key={element+'-'+index} onChange={(e)=>items.onChange(e)} error={errors && errors[element.name]} />;
+                            return <DoB key={element + '-' + index} onChange={(e) => items.onChange(e)} error={errors && errors[element.name]} />;
                         } else {
                             return <></>;
                         }
@@ -48,7 +48,7 @@ function CustomModal({ items }) {
                     })}
                     <Row style={{ "marginTop": "20px" }}>
                         {items.buttons && items.buttons.map((button, index) => {
-                            return <CustomButton key={button+'-'+index} type={button.type} buttonText={button.label} onClick={button.onClick} className={button.class} span={button.span} offset={button.offset} />
+                            return <CustomButton key={button + '-' + index} type={button.type} buttonText={button.label} onClick={button.onClick} className={button.class} span={button.span} offset={button.offset} />
                         })}
                     </Row>
                 </Form>

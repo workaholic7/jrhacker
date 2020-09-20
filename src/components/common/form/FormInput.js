@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Col, Row } from 'react-bootstrap';
 import FormControlInput from './FormControlInput';
 
-export default function FormInput({ name, placeholder, value, onChange, className, required,
+export default function FormInput({ name, placeholder, value, onChange, className, type,
     span, offset, label, labelSpan, labelOffset, labelStyle, labelClass, disabled, hidden, error }) {
     return (
         <Form.Group as={Row} controlId={"formBasic" + name}>
@@ -11,11 +11,11 @@ export default function FormInput({ name, placeholder, value, onChange, classNam
                     <Form.Label style={labelStyle} className={labelClass} >{label}</Form.Label>
                 </Col>
                 : <></>}
-                <FormControlInput span={span} offset={offset} name={name} placeholder={placeholder}
-                    value={value} onChange={onChange}
-                    required={required} disabled={disabled} className={className}
-                    hidden={hidden} />
-                    {error&&<span>{error}</span>}
+            <FormControlInput span={span} offset={offset} name={name} placeholder={placeholder}
+                value={value} onChange={onChange}
+                disabled={disabled} className={className}
+                hidden={hidden} type={type} />
+            {error && <span className="error-message">{error}</span>}
         </Form.Group>
     )
 }

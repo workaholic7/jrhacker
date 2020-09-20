@@ -18,7 +18,8 @@ export default function FormSelect(props) {
                             <Form.Label style={props.labelStyle} className={props.labelClass}>{props.label}</Form.Label>
                         </Col>
                         : <> </>}
-                    <FormControlSelect {...props}/>
+                    <FormControlSelect {...props} />
+                    {props.error && <span className="error-message">{props.error}</span>}
                 </Form.Group>
             }
         </>
